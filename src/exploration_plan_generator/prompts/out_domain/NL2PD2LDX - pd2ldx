@@ -205,10 +205,3 @@ explanation:
 
 Now convert the following while making sure '[' is closed by ']' and not by other parenthesis.
 Pandas:
-df = pd.read_csv("netflix.tsv", delimiter="	")
-
-show_1132 = df[df['show_id'] == 1132]
-
-show_1132_properties_1 = show_1132.groupby(<COL1>).agg(<AGG1>)
-show_1132_properties_2 = show_1132.groupby(<COL2>).agg(<AGG2>)
-LDX:

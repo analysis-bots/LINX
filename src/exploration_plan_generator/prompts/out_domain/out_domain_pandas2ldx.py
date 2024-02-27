@@ -7,8 +7,8 @@ Pandas:
         some_platform = df[df['platform'] == <VALUE>]
         other_platforms = df[df['platform'] != <VALUE>]
 
-        some_platform_agg = some_platform.groupby(<COL>).agg(<AGG>)
-        other_platforms_agg = other_platforms.groupby(<COL>).agg(<AGG>)
+        some_platform_agg = some_platform.groupby(<COL>).agg({<AGG_COL>:<AGG_FUNC>})
+        other_platforms_agg = other_platforms.groupby(<COL>).agg({<AGG_COL>:<AGG_FUNC>})
 
         # compare the two aggregations
         comparison = pd.concat([some_platform_agg, other_platforms_agg], axis=1)
@@ -21,20 +21,19 @@ LDX:
     """,
     2:
         """
-Pandas:
+Pandas: 
        df = pd.read_csv("ds_salaries.tsv", delimiter="\\t")
        greater_than_219000 = df[df['salary_in_usd'] > 219000]
-       properties1 = greater_than_219000.groupby(<COL1>).agg(<AGG1>)
-       focus_of_col1 = greater_than_219000[greater_than_219000[<COL1>] == <VALUE1>]
-       properties2 = focus_of_col1.groupby(<COL2>).agg(<AGG2>)
-       focus_of_col2 = focus_of_col1[focus_of_col1[<COL2>] == <VALUE2>]
+       properties1 = greater_than_219000.groupby(<COL1>).agg({<AGG_COL1>:<AGG_FUNC1>})
+       max_property = job_title_counting['<COL1>'].idxmax()
+       focus_of_col1 = greater_than_219000[greater_than_219000[<COL1>] == max_property]
+       properties2 = focus_of_col1.groupby(<COL2>).agg({<AGG_COL2>:<AGG_FUNC2>})
 LDX:
         BEGIN CHILDREN {A1}
         A1 LIKE [F,salary_in_usd,gt,219000] and CHILDREN {B1,B2}
         B1 LIKE [G,<COL1>,<AGG_FUNC1>,<AGG_COL1>]
         B2 LIKE [F,<COL1>,eq,<VALUE1>] and CHILDREN {C1,C2}
             C1 LIKE [G,<COL2>,<AGG_FUNC2>,<AGG_COL2>]
-            C2 LIKE [F,<COL2>,eq,<VALUE2>]
     """,
     3:
         """
@@ -45,9 +44,9 @@ Pandas:
         second_product = df[df['Product'] == <VALUE2>]
         third_product = df[df['Product'] == <VALUE3>]
 
-        first_product_agg = first_product.groupby(<COL>).agg(<AGG>)
-        second_product_agg = second_product.groupby(<COL>).agg(<AGG>)
-        third_product_agg = third_product.groupby(<COL>).agg(<AGG>)
+        first_product_agg = first_product.groupby(<COL>).agg({<AGG_COL>:<AGG_FUNC>})
+        second_product_agg = second_product.groupby(<COL>).agg({<AGG_COL>:<AGG_FUNC>})
+        third_product_agg = third_product.groupby(<COL>).agg({<AGG_COL>:<AGG_FUNC>})
 LDX:
       BEGIN CHILDREN {A1,A2,A3}
       A1 LIKE [F,Product,eq,<VALUE1>] and CHILDREN {B1}
@@ -81,12 +80,12 @@ LDX:
 Pandas:       
        df = pd.read_csv("emojis.tsv", delimiter="\\t")
 
-       emojis_properties_1 = df.groupby(<COL1>).agg(<AGG1>)
-       emojis_properties_2 = df.groupby(<COL2>).agg(<AGG2>)
+       emojis_properties_1 = df.groupby(<COL1>).agg({<AGG_COL1>:<AGG_FUNC1>})
+       emojis_properties_2 = df.groupby(<COL2>).agg({<AGG_COL2>:<AGG_FUNC2>})
 
        2022_emojis = df[df['Year'] == 2022]
-       2022_emojis_properties_1 = 2022_emojis.groupby(<COL1>).agg(<AGG1>)
-       2022_emojis_properties_2 = 2022_emojis.groupby(<COL2>).agg(<AGG2>)
+       2022_emojis_properties_1 = 2022_emojis.groupby(<COL1>).agg({<AGG_COL1>:<AGG_FUNC1>})
+       2022_emojis_properties_2 = 2022_emojis.groupby(<COL2>).agg({<AGG_COL2>:<AGG_FUNC2>})
 LDX:
       BEGIN CHILDREN {A1,A2,A3}
       A1 LIKE [G,<COL1>,<AGG_FUNC1>,<AGG_COL1>]
@@ -104,9 +103,9 @@ Pandas:
        model2 = df[df['model'] == <VALUE2>]
        model3 = df[df['model'] == <VALUE3>]
 
-       model1_properties = model1.groupby(<COL1>).agg(<AGG1>)
-       model2_properties = model2.groupby(<COL2>).agg(<AGG2>)
-       model3_properties = model3.groupby(<COL3>).agg(<AGG3>)
+       model1_properties = model1.groupby(<COL1>).agg({<AGG_COL1>:<AGG_FUNC1>})
+       model2_properties = model2.groupby(<COL2>).agg({<AGG_COL2>:<AGG_FUNC2>})
+       model3_properties = model3.groupby(<COL3>).agg({<AGG_COL3>:<AGG_FUNC3>})
 LDX:
         BEGIN CHILDREN {A1,A2,A3}
         A1 LIKE [F,model,eq,<VALUE1>] and CHILDREN {B1}
@@ -125,8 +124,8 @@ Pandas:
 
        drake_songs = df[df['Artist'] == 'Drake']
 
-       drake_songs_properties_1 = drake_songs.groupby(<COL1>).agg(<AGG1>)
-       drake_songs_properties_2 = drake_songs.groupby(<COL2>).agg(<AGG2>)
+       drake_songs_properties_1 = drake_songs.groupby(<COL1>).agg({<AGG_COL1>:<AGG_FUNC1>})
+       drake_songs_properties_2 = drake_songs.groupby(<COL2>).agg({<AGG_COL2>:<AGG_FUNC2>})
 LDX:
         BEGIN DESCENDANTS {A1}
         A1 LIKE [F,Artist,eq,Drake] and CHILDREN {B1,B2}
@@ -140,8 +139,8 @@ Pandas:
 
         5_stars_repos = df[df['Stars'] == '5']
 
-        5_stars_repos_grouped = 5_stars_repos.groupby(<COL1>).agg(<AGG1>)
-        5_stars_repos_sub_grouped = 5_stars_repos_grouped.groupby(<COL2>).agg(<AGG2>)
+        5_stars_repos_grouped = 5_stars_repos.groupby(<COL1>).agg({<AGG_COL1>:<AGG_FUNC1>})
+        5_stars_repos_sub_grouped = 5_stars_repos_grouped.groupby(<COL2>).agg({<AGG_COL2>:<AGG_FUNC2>})
 LDX:
         BEGIN CHILDREN {A1}
         A1 LIKE [F,Stars,eq,5] and CHILDREN {B1}

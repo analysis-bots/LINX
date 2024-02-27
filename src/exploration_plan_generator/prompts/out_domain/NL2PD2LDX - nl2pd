@@ -41,7 +41,7 @@ task: find one game platform which has one different property compared to all th
 dataset: epic_games
 scheme: id, name, game_slug, price, release_date, platform, description, developer, publisher, genres
 LDX:
-        df = pd.read_csv("epic_games.tsv", delimiter="	")
+        df = pd.read_csv("epic_games.tsv", delimiter="\t")
 
         some_platform = df[df['platform'] == <VALUE>]
         other_platforms = df[df['platform'] != <VALUE>]
@@ -55,7 +55,7 @@ task: investigate what makes data scientists to earn above the 90th percentile s
 dataset: ds_salaries
 scheme:	work_year, experience_level, employment_type, job_title, salary, salary_currency, salary_in_usd, employee_residence, remote_ratio, company_location
 LDX:
-       df = pd.read_csv("ds_salaries.tsv", delimiter="	")
+       df = pd.read_csv("ds_salaries.tsv", delimiter="\t")
 
        greater_than_219000 = df[df['salary_in_usd'] > 219000]
 
@@ -74,7 +74,7 @@ task: compare some three different subsets of processors according to some prope
 dataset: intel_processors
 scheme:	Product, Status, Release Date, Cores, Threads, Lithography, Max. Turbo Freq, Base Freq, TDP, Cache
 LDX:
-        df = pd.read_csv("intel_processors.tsv", delimiter="	")
+        df = pd.read_csv("intel_processors.tsv", delimiter="\t")
 
         first_product = df[df['Product'] == <VALUE1>]
         second_product = df[df['Product'] == <VALUE2>]
@@ -90,7 +90,7 @@ task: show the average cost of some two different subsets of houses
 dataset: houses
 scheme: Area, BHK, Bathroom, Furnishing, Locality, Parking, Price, Status, Transaction, Type, Per_Sqft
 LDX:
-       df = pd.read_csv("houses.tsv", delimiter="	")
+       df = pd.read_csv("houses.tsv", delimiter="\t")
 
        first_subset = df[df[<COL1>] == <VALUE1>]
        first_subset_agg = first_subset.groupby(<AGG_COL1>).agg({'Price': 'mean'})
@@ -103,7 +103,7 @@ task: show two properties of emojis published in 2022 compared to all the emojis
 dataset: emojis
 scheme: Hex, Rank, Emoji, Year, Category, Subcategory, Name
 LDX:
-       df = pd.read_csv("emojis.tsv", delimiter="	")
+       df = pd.read_csv("emojis.tsv", delimiter="\t")
 
        emojis_properties_1 = df.groupby(<COL1>).agg(<AGG1>)
        emojis_properties_2 = df.groupby(<COL2>).agg(<AGG2>)
@@ -117,7 +117,7 @@ task: explore three different car models in different ways
 dataset: cars
 scheme: addref, city, assembly, body, make, model, year, engine, transmission, fuel
 LDX:
-       df = pd.read_csv("cars.tsv", delimiter="	")
+       df = pd.read_csv("cars.tsv", delimiter="\t")
 
        model1 = df[df['model'] == <VALUE1>]
        model2 = df[df['model'] == <VALUE2>]
@@ -132,7 +132,7 @@ task: explore the data, make sure to address two interesting properties of the r
 dataset: spotify
 scheme: Artist, Streams, Daily, As lead, Solo, As feature
 LDX:
-       df = pd.read_csv("spotify.tsv", delimiter="	")
+       df = pd.read_csv("spotify.tsv", delimiter="\t")
 
        do_some_operations()
 
@@ -146,7 +146,7 @@ task: show interesting sub-groups of 5-stars repositories
 dataset: github
 scheme: Name, Description, URL, Created At, Updated At, Homepage, Size, Stars, Forks, Issues
 LDX:
-        df = pd.read_csv("github.tsv", delimiter="	")
+        df = pd.read_csv("github.tsv", delimiter="\t")
 
         5_stars_repos = df[df['Stars'] == '5']
 

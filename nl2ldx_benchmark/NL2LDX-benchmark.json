@@ -1,7 +1,7 @@
 [
   [
     4,
-    "Display the highest price among two distinct subsets of applications.",
+    "Display properties about the highest price among two distinct subsets of applications.",
     "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,max,price]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,max,price]",
     "play_store.tsv"
   ],
@@ -43,7 +43,7 @@
   ],
   [
     3,
-    "Compare three different flights based on certain characteristics.",
+    "Compare three different flights based on one certain characteristic.",
     "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,flight_id,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,flight_id,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,flight_id,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
     "flights.tsv"
   ],
@@ -68,18 +68,18 @@
   [
     5,
     "Display two attributes of movies/shows that with the cast: Nina Kiri, Ry Barrett, Jorja Cadence, Will King, and Nina Richmond, in comparison to all the shows.",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,cast,eq,\"Nina Kiri, Ry Barrett, Jorja Cadence, Will King, Nina Richmond\"] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,cast,eq,\"Nina Kiri, Ry Barrett, Jorja Cadence, Will King, Nina Richmond\"] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)] \n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "netflix.tsv"
   ],
   [
     4,
-    "Display the count of flights for two distinct subsets of flights.",
+    "Display properties about the count of flights for two distinct subsets of flights.",
     "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,count,flight_id]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,count,flight_id]",
     "flights.tsv"
   ],
   [
     3,
-    "Compare three subsets of scheduled departure attribute.",
+    "Compare three subsets of scheduled departure attribute based on one certain characteristic.",
     "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
     "flights.tsv"
   ],
@@ -92,12 +92,12 @@
   [
     5,
     "Display two properties of app id 5248 when compared to all of the applications.",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,app_id,ne,5248] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,app_id,ne,5248] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)] \n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "play_store.tsv"
   ],
   [
     9,
-    "Display the interesting sub-groups (groups of groups) of the show \"Case Closed\".",
+    "Display properties about the interesting sub-groups (groups of groups) of the show \"Case Closed\".",
     "BEGIN CHILDREN {A1}\n A1 LIKE [F,title,eq,Case Closed] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
     "netflix.tsv"
   ],
@@ -109,7 +109,7 @@
   ],
   [
     3,
-    "Compare three movies/shows release years.",
+    "Compare three movies/shows release years based on one certain characteristic.",
     "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,release_year,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,release_year,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,release_year,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
     "netflix.tsv"
   ],
@@ -121,7 +121,7 @@
   ],
   [
     4,
-    "Display the highest departure delay among two distinct subsets of flights.",
+    "Display properties about the highest departure delay among two distinct subsets of flights.",
     "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,max,departure_delay]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,max,departure_delay]",
     "flights.tsv"
   ],
@@ -140,7 +140,7 @@
   [
     5,
     "Show two properties of movies/shows that were added at August 31, 2020, compared to all of the movies/shows.",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,date_added,eq,August 31, 2020] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,date_added,eq,August 31, 2020] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)] \n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "netflix.tsv"
   ],
   [
@@ -188,7 +188,7 @@
   [
     5,
     "Display two characteristics of apps with size at least 7900 kilobytes, when compared to all apps.",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,app_size_kb,gt,7900] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,app_size_kb,gt,7900] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)] \n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "play_store.tsv"
   ],
   [
@@ -223,7 +223,7 @@
   ],
   [
     3,
-    "Compare three origin airports according to some properties.",
+    "Compare three origin airports according to one certain characteristic.",
     "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,origin_airport,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,origin_airport,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,origin_airport,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
     "flights.tsv"
   ],
@@ -236,19 +236,19 @@
   [
     5,
     "Show two properties of show id 697 compared to all of the movies/shows.",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,show_id,eq,697] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,show_id,eq,697] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "netflix.tsv"
   ],
   [
     3,
-    "Compare three delay reasons according to some properties",
+    "Compare three delay reasons according to one certain characteristic",
     "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,delay_reason,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,delay_reason,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,delay_reason,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
     "flights.tsv"
   ],
   [
     5,
     "Show two properties of free apps compared to all of the apps.",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,type,contains,Free] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,type,contains,Free] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "play_store.tsv"
   ],
   [
@@ -289,13 +289,13 @@
   ],
   [
     3,
-    "Compare three subsets of type according to some properties.",
+    "Compare three subsets of type according to one certain characteristic.",
     "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,type,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,type,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,type,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
     "netflix.tsv"
   ],
   [
     4,
-    "Display the maximum duration of two distinct subsets of movies/shows.",
+    "Display properties about the maximum duration of two distinct subsets of movies/shows.",
     "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,max,duration]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,max,duration]",
     "netflix.tsv"
   ],
@@ -314,7 +314,7 @@
   [
     5,
     "show two properties of flights that were scheduled to the morning compared to all the flights",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,scheduled_departure,eq,MORNING] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,scheduled_departure,eq,MORNING] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "flights.tsv"
   ],
   [
@@ -325,14 +325,14 @@
   ],
   [
     3,
-    "Compare three directors according to some properties",
+    "Compare three directors according to one certain characteristic",
     "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,director,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,director,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,director,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
     "netflix.tsv"
   ],
   [
     5,
-    "Display two properties of flights with flight id contain 123 in comparison to all other flights.",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,flight_id,contains,123] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "Display two properties of flights with flight id contain 123 in comparison to all the flights.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,flight_id,contains,123] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "flights.tsv"
   ],
   [
@@ -343,20 +343,20 @@
   ],
   [
     3,
-    "Compare three subsets of price according to some properties",
+    "Compare three subsets of price according to one certain characteristic",
     "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,price,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,price,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,price,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
     "play_store.tsv"
   ],
   [
     3,
-    "Compare three subsets of scheduled arrival according to some properties.",
+    "Compare three subsets of scheduled arrival according to one certain characteristic.",
     "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,scheduled_arrival,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,scheduled_arrival,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,scheduled_arrival,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
     "flights.tsv"
   ],
   [
     5,
     "Display two characteristics of applications that last updated after 2018, in comparison to all of the applications.",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,last_updated,gt,2018] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,last_updated,gt,2018] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "play_store.tsv"
   ],
   [
@@ -368,13 +368,13 @@
   [
     5,
     "Display two characteristics of Match flights, compared to flights of all of the months.",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,month,eq,3] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,month,eq,3] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "flights.tsv"
   ],
   [
     5,
     "Display two characteristics of apps that are not Free in comparison to all of the apps.",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,type,ne,Free] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,type,ne,Free] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "play_store.tsv"
   ],
   [
@@ -391,7 +391,7 @@
   ],
   [
     3,
-    "Compare three subsets of minimum required Android version according to some properties.",
+    "Compare three subsets of minimum required Android version according to one certain characteristic.",
     "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,min_android_ver,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,min_android_ver,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,min_android_ver,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
     "play_store.tsv"
   ],
@@ -404,7 +404,7 @@
   [
     5,
     "Show two properties of flights that were scheduled to depart at the evening, compared to all the flights.",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,scheduled_departure,eq,EVENING] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,scheduled_departure,eq,EVENING] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "flights.tsv"
   ],
   [
@@ -427,25 +427,25 @@
   ],
   [
     4,
-    "Display the longest duration among two distinct subsets of movies/shows.",
+    "Display properties about the longest duration among two distinct subsets of movies/shows.",
     "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,max,duration]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,max,duration]",
     "netflix.tsv"
   ],
   [
     5,
     "Show two properties of movies/shows directed by Timothy Woodward Jr, compared to all of the movies/shows.",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,director,eq,Timothy Woodward Jr] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,director,eq,Timothy Woodward Jr] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "netflix.tsv"
   ],
   [
     3,
-    "Compare three names according to some properties.",
+    "Compare three names according to one certain characteristic.",
     "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,name,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,name,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,name,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
     "play_store.tsv"
   ],
   [
     4,
-    "Display the count of ratings for two distinct subsets of movies/shows.",
+    "Display properties about the count of ratings for two distinct subsets of movies/shows.",
     "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,count,rating]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,count,rating]",
     "netflix.tsv"
   ],
@@ -469,7 +469,7 @@
   ],
   [
     3,
-    "Compare three departure delays according to some properties.",
+    "Compare three departure delays according to one certain characteristic.",
     "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,departure_delay,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,departure_delay,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,departure_delay,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
     "flights.tsv"
   ],
@@ -482,7 +482,7 @@
   [
     5,
     "Display two characteristics of applications that have a rating higher than 2 in comparison to all other applications.",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,rating,gt,2.0] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,rating,gt,2.0] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "play_store.tsv"
   ],
   [
@@ -494,7 +494,7 @@
   [
     5,
     "Display two characteristics of flights where the departed from Boston in comparison to all of the flights.",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,origin_airport,eq,BOS] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,origin_airport,eq,BOS] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "flights.tsv"
   ],
   [
@@ -529,7 +529,7 @@
   ],
   [
     9,
-    NaN,
+    "",
     "BEGIN CHILDREN {A1}\n A1 LIKE [F,reviews,ne,31986] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
     "play_store.tsv"
   ],
@@ -542,7 +542,7 @@
   [
     5,
     "Show two properties of flights that were scheduled to arrive at the afternoon, compared to all the flights.",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,scheduled_arrival,eq,AFTERNOON] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,scheduled_arrival,eq,AFTERNOON] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "flights.tsv"
   ],
   [
@@ -589,13 +589,13 @@
   ],
   [
     4,
-    "Display the average duration of two distinct subsets of movies/shows.",
+    "Display properties about the average duration of two distinct subsets of movies/shows.",
     "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,mean,duration]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,mean,duration]",
     "netflix.tsv"
   ],
   [
     4,
-    "Display the highest number of reviews from two distinct groups of applications.",
+    "Display properties about the highest number of reviews from two distinct groups of applications.",
     "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,max,reviews]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,max,reviews]",
     "play_store.tsv"
   ],
@@ -613,14 +613,14 @@
   ],
   [
     3,
-    "Compare three subsets of added dates according to some properties.",
+    "Compare three subsets of added dates according to one certain characteristic.",
     "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,date_added,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,date_added,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,date_added,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
     "netflix.tsv"
   ],
   [
     5,
     "Show two properties of flights that their scheduled trip time was 'MID_FLIGHT ', in comparison to all of the flights",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,scheduled_trip_time,eq,MID_FLIGHT] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,scheduled_trip_time,eq,MID_FLIGHT] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "flights.tsv"
   ],
   [
@@ -632,7 +632,7 @@
   [
     5,
     "Show two properties of flights with that has delay reason, compared to all the flights",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,delay_reason,ne,nan] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,delay_reason,ne,nan] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "flights.tsv"
   ],
   [
@@ -661,8 +661,8 @@
   ],
   [
     5,
-    "Display two properties of  show id 3577 in comparison to all of the shows.",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,show_id,eq,3577] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "Display two properties of show id 3577 in comparison to all of the shows.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,show_id,eq,3577] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "netflix.tsv"
   ],
   [
@@ -697,7 +697,7 @@
   ],
   [
     4,
-    "Display the lowest price among two distinct subsets of applications.",
+    "Display properties about the lowest price among two distinct subsets of applications.",
     "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,min,price]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,min,price]",
     "play_store.tsv"
   ],
@@ -709,19 +709,19 @@
   ],
   [
     4,
-    "Display the minimum departure delay of two distinct groups of flights.",
+    "Display properties about the minimum departure delay of two distinct groups of flights.",
     "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,min,departure_delay]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,min,departure_delay]",
     "flights.tsv"
   ],
   [
     5,
     "Show two properties of app id 355 compared to all of the apps.",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,app_id,eq,355] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,app_id,eq,355] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "play_store.tsv"
   ],
   [
     4,
-    "Display the average price of two distinct groups of applications.",
+    "Display properties about the average price of two distinct groups of applications.",
     "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,mean,price]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,mean,price]",
     "play_store.tsv"
   ],
@@ -764,12 +764,12 @@
   [
     5,
     "Show two properties of apps categortized as finance, in comparison to all of the apps.",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,category,eq,FINANCE] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,category,eq,FINANCE] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "play_store.tsv"
   ],
   [
     3,
-    "Compare three content ratings according to some properties.",
+    "Compare three content ratings according to one certain characteristic.",
     "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,content_rating,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,content_rating,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,content_rating,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
     "play_store.tsv"
   ],
@@ -788,7 +788,7 @@
   [
     5,
     "Show two properties of apps pliced below 0.99 compared to all of the apps.",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,price,lt,0.99] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,price,lt,0.99] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "play_store.tsv"
   ],
   [
@@ -805,7 +805,7 @@
   ],
   [
     3,
-    "Compare three countries according to some properties.",
+    "Compare three countries according to one certain characteristic.",
     "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,country,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,country,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,country,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
     "netflix.tsv"
   ],
@@ -853,7 +853,7 @@
   ],
   [
     3,
-    "Compare three ratings according to some properties.",
+    "Compare three ratings according to one certain characteristic.",
     "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,rating,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,rating,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,rating,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
     "netflix.tsv"
   ],
@@ -901,7 +901,7 @@
   ],
   [
     4,
-    "Display the average minimum Android version required for two distinct groups of applications.",
+    "Display properties about the average minimum Android version required for two distinct groups of applications.",
     "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,mean,min_android_ver]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,mean,min_android_ver]",
     "play_store.tsv"
   ],
@@ -914,36 +914,36 @@
   [
     5,
     "Show two properties of flights without delay reason equal compared to all of the flights.",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,delay_reason,eq,nan] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,delay_reason,eq,nan] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "flights.tsv"
   ],
   [
     4,
-    "Display the highest rating among two distinct groups of applications.",
+    "Display properties about the highest rating among two distinct groups of applications.",
     "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,max,rating]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,max,rating]",
     "play_store.tsv"
   ],
   [
     5,
     "Display two attributes of movies/shows that have a show id 1069, compared to all of the movies/shows.",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,show_id,eq,1069] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,show_id,eq,1069] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "netflix.tsv"
   ],
   [
     4,
-    "Display the lowest scheduled trip time among two distinct groups of flights.",
+    "Display properties about the lowest scheduled trip time among two distinct groups of flights.",
     "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,min,scheduled_trip_time]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,min,scheduled_trip_time]",
     "flights.tsv"
   ],
   [
     3,
-    "Compare three reviews numbers according to some properties.",
+    "Compare three reviews numbers according to one certain characteristic.",
     "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,reviews,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,reviews,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,reviews,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
     "play_store.tsv"
   ],
   [
     3,
-    "Compare three subsets of flights according to some properties.",
+    "Compare three subsets of flights according to one certain characteristic.",
     "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,flight_number,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,flight_number,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,flight_number,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
     "flights.tsv"
   ],
@@ -955,7 +955,7 @@
   ],
   [
     3,
-    "Compare three days of the week according to some properties.",
+    "Compare three days of the week according to one certain characteristic.",
     "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,day_of_week,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,day_of_week,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,day_of_week,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
     "flights.tsv"
   ],
@@ -991,31 +991,31 @@
   ],
   [
     4,
-    "Display the highest rating among two distinct subsets of movies/shows.",
+    "Display properties about the highest rating among two distinct subsets of movies/shows.",
     "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,max,rating]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,max,rating]",
     "netflix.tsv"
   ],
   [
     5,
     "Show two properties of movies/shows directed by Gary Youn, compared to all of the shows",
-    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,director,eq,Gary Young] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,director,eq,Gary Young] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A3 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
     "netflix.tsv"
   ],
   [
     4,
-    "Display the average scheduled trip time of two distinct subsets of flights.",
+    "Display properties about the average scheduled trip time of two distinct subsets of flights.",
     "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,mean,scheduled_trip_time]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,mean,scheduled_trip_time]",
     "flights.tsv"
   ],
   [
     4,
-    "Display the average departure delay for two distinct subsets of flights.",
+    "Display properties about the average departure delay for two distinct subsets of flights.",
     "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,mean,departure_delay]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,mean,departure_delay]",
     "flights.tsv"
   ],
   [
     3,
-    "Compare three different months according to some properties.",
+    "Compare three different months according to one certain characteristic.",
     "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,month,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,month,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,month,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
     "flights.tsv"
   ],
@@ -1027,7 +1027,7 @@
   ],
   [
     4,
-    "Display the lowest minimum Android version required among two distinct subsets of applications.",
+    "Display properties about the lowest minimum Android version required among two distinct subsets of applications.",
     "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,min,min_android_ver]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,min,min_android_ver]",
     "play_store.tsv"
   ],

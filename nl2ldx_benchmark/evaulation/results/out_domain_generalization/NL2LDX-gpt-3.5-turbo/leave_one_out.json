@@ -1,1 +1,1088 @@
-[[4, "Display the highest price among two distinct subsets of applications.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,max,price]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,max,price]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,category,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,price,max,price]\nA2 LIKE [F,category,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,price,max,price]\n\n"], [5, "Display two properties of show id 1132 in comparison to all the shows.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,show_id,eq,1132] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,show_id,eq,1132] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,show_id,ne,1132] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"], [1, "Find a size of apps that have a distinct property compared to the other app sizes.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,app_size_kb,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,app_size_kb,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [G,app_size_kb,.*] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [8, "Explore the data, make sure to focus on two intriguing aspects of apps with required Android version higher than 4", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,min_android_ver,gt,4] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,min_android_ver,gt,4] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,min_android_ver,gt,4] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"], [1, "Find a destination airport that has a distinct property compared to the other destination airports.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,destination_airport,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,destination_airport,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [G,destination_airport,(?<AGG_FUNC>.*),(?<AGG_COL>.*)] and CHILDREN {B1}\n    B1 LIKE [G,destination_airport,(?<AGG_FUNC>.*),(?<AGG_COL>.*)] and CHILDREN {C1}\n        C1 LIKE [F,destination_airport,neq,.*]\n"], [8, "Analyze the data, ensuring to focus on two intriguing aspects of apps that are not categorized as Free.", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,type,ne,Free] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,type,ne,Free] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [2, "Examine the factors that contribute to apps reaching one million installations and delve into the specific reasons behind it.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,installs,eq,1000000] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,installs,eq,1000000] and CHILDREN {B1,B2,B3,B4}\n    B1 LIKE [G,category,count,app_id]\n    B2 LIKE [G,rating,mean,app_id]\n    B3 LIKE [G,reviews,sum,app_id]\n    B4 LIKE [G,content_rating,count,app_id]\n"], [3, "Compare three different flights based on certain characteristics.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,flight_id,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,flight_id,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,flight_id,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,flight_id,eq,65] and CHILDREN {B1,B2}\n    B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\nA2 LIKE [F,flight_id,eq,71] and CHILDREN {B3,B4}\n    B3 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B4 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\nA3 LIKE [F,flight_id,eq,104] and CHILDREN {B5,B6}\n    B5 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B6 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n"], [8, "Explore the data and ensure to examine two intriguing aspects of movies/shows released at 2020.", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,release_year,eq,2020] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,release_year,eq,2020] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,release_year,eq,2020] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"], [2, "Examine the factors that cause flights to have a small delay and delve into the specific reasons behind it.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,departure_delay,eq,SMALL_DELAY] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,delay_reason,eq,SMALL_DELAY] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [8, "Explore the data and ensure to examine two intriguing aspects of flights departed from ORD", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,destination_airport,eq,ORD] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,origin_airport,eq,ORD] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [5, "Display two attributes of movies/shows that with the cast: Nina Kiri, Ry Barrett, Jorja Cadence, Will King, and Nina Richmond, in comparison to all the shows.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,cast,eq,\"Nina Kiri, Ry Barrett, Jorja Cadence, Will King, Nina Richmond\"] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,cast,eq,\"Nina Kiri, Ry Barrett, Jorja Cadence, Will King, Nina Richmond\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [4, "Display the count of flights for two distinct subsets of flights.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,count,flight_id]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,count,flight_id]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,.*,count,flight_id]\nA2 LIKE [G,.*,count,flight_id]\n\n"], [3, "Compare three subsets of scheduled departure attribute.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [6, "Explore in different ways three different ratings. ", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,rating,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,rating,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,rating,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,rating,eq,'TV-MA'] and CHILDREN {B1}\n    B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\nA2 LIKE [F,rating,eq,'R'] and CHILDREN {B2}\n    B2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\nA3 LIKE [F,rating,eq,'PG-13'] and CHILDREN {B3}\n    B3 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n"], [5, "Display two properties of app id 5248 when compared to all of the applications.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,app_id,ne,5248] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,app_id,eq,5248] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [9, "Display the interesting sub-groups of the show \"Case Closed\".", "BEGIN CHILDREN {A1}\n A1 LIKE [F,title,eq,Case Closed] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,title,eq,\"Case Closed\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [3, "Compare the properties of three different casts.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,cast,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,cast,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,cast,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,cast,eq,\"Jo\u00e3o Miguel, Bianca Comparato, Michel Gomes, Rodolfo Valente, Vaneza Oliveira, Rafael Lozano, Viviane Porto, Mel Fronckowiak, Sergio Mamberti, Zez\u00e9 Motta, Celso Frateschi\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,cast,eq,\"Demi\u00e1n Bichir, H\u00e9ctor Bonilla, Oscar Serrano, Azalia Ortiz, Octavio Michel, Carmen Beato\"] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,cast,eq,\"Tedd Chan, Stella Chung, Henley Hii, Lawrence Koh, Tommy Kuan, Josh Lai, Mark Lee, Susan Leong, Benjamin Lim\"] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [3, "Compare three movies/shows release years.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,release_year,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,release_year,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,release_year,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,type,eq,\"Movie\"] and CHILDREN {B1}\n    B1 LIKE [G,release_year,count,show_id]\nA2 LIKE [F,type,eq,\"TV Show\"] and CHILDREN {B2}\n    B2 LIKE [G,release_year,count,show_id]\nA3 LIKE [F,type,eq,\"Movie\"] and CHILDREN {B3}\n    B3 LIKE [G,release_year,count,show_id]\n"], [8, "Explore the data, make sure to address two interesting aspects of movies/shows with description contains the word \"Scottish\".", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,description,contains,Scottish] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,description,contains,Scottish] and CHILDREN {B1,B2}\n    B1 LIKE [G,type,count,type]\n    B2 LIKE [G,country,count,country]\n"], [4, "Display the highest departure delay among two distinct subsets of flights.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,max,departure_delay]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,max,departure_delay]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,(?<COL1>.*),max,(?<COL2>.*)] and CHILDREN {B1}\n    B1 LIKE [F,(?<COL3>.*),eq,.*]\nA2 LIKE [G,(?<COL1>.*),max,(?<COL2>.*)] and CHILDREN {B2}\n    B2 LIKE [F,(?<COL3>.*),eq,.*]\n\n"], [6, "Explore in different ways three different flight numbers. ", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,flight_number,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,flight_number,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,flight_number,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,flight_number,eq,103] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,flight_number,eq,2454] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,flight_number,eq,727] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [5, "Display two properties of movies.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,type,eq,Movie] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,type,eq,Movie] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n\n"], [5, "Show two properties of movies/shows that were added at August 31, 2020, compared to all of the movies/shows.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,date_added,eq,August 31, 2020] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,date_added,eq,\"August 31, 2020\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,date_added,ne,\"August 31, 2020\"] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"], [2, "Examine the factors that contribute to shows being categorized as International Movies and drill down into the specific reasons behind it.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,listed_in,contains,International Movies] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,listed_in,eq,International Movies] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [8, "Analyze the data, make sure to address two interesting aspects of show id 2216", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,show_id,eq,2216] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,show_id,eq,2216] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"], [1, "Identify an apps category that possesses a distinct characteristic in comparison to al the other categories.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,type,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,type,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [G,category,count,app_id] and CHILDREN {B1}\n    B1 LIKE [G,category,count,app_id]\n"], [8, "Explore the data, make sure to address two interesting aspects of flights that had departure delay.", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,departure_delay,ne,ON_TIME] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,departure_delay,ne,ON_TIME] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [9, "Display interesting sub-groups of Thursday flights.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,day_of_week,eq,5] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,day_of_week,eq,4] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [9, "Show interesting sub-groups of apps with Everyone content rating ", "BEGIN CHILDREN {A1}\n A1 LIKE [F,content_rating,eq,Everyone] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,content_rating,eq,Everyone] and CHILDREN {B1,B2}\n    B1 LIKE [G,category,count,app_id]\n    B2 LIKE [G,rating,mean,rating]\n"], [6, "Explore three different flights in different ways", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,flight_id,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,flight_id,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,flight_id,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,flight_id,eq,65] and CHILDREN {B1,B2}\n    B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\nA2 LIKE [F,flight_id,eq,71] and CHILDREN {B3,B4}\n    B3 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B4 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\nA3 LIKE [F,flight_id,eq,104] and CHILDREN {B5,B6}\n    B5 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B6 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n"], [5, "Display two characteristics of apps with size at least 7900 kilobytes, when compared to all apps.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,app_size_kb,gt,7900] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,app_size_kb,ge,7900] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [9, "Show interesting sub-groups of flights that weren't scheduled to arrive at the morning", "BEGIN CHILDREN {A1}\n A1 LIKE [F,scheduled_arrival,ne,MORNING] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,scheduled_arrival,ne,MORNING] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [1, "Find one cast which has one different property compared to the other casts", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,cast,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,cast,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [G,cast,count,director] and CHILDREN {B1}\n    B1 LIKE [G,cast,count,release_year] and CHILDREN {C1}\n        C1 LIKE [G,cast,count,rating]\n"], [9, "Show interesting sub-groups of movies/shows which were added at March 1, 2016", "BEGIN CHILDREN {A1}\n A1 LIKE [F,date_added,eq,March 1, 2016] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,date_added,eq,\"March 1, 2016\"] and CHILDREN {B1}\n    B1 LIKE [G,type,count,show_id]\n"], [9, "Show interesting sub-groups of flights with flight id 56207.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,flight_id,eq,56207] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,flight_id,eq,56207] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [1, "Find a country that has one different property compared to the other countries.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,country,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,country,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [G,country,count,duration] and CHILDREN {B1}\n    B1 LIKE [G,country,count,rating]\n"], [3, "Compare three origin airports according to some properties.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,origin_airport,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,origin_airport,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,origin_airport,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,origin_airport,eq,BOS] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,origin_airport,eq,(?<VALUE2>.*)] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,origin_airport,eq,(?<VALUE3>.*)] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [2, "Examine the factors that cause apps to have a price higher than 100$ and delve into the specific reasons behind it.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,price,gt,100.0] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,price,gt,100] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [5, "Show two properties of show id 697 compared to all of the movies/shows.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,show_id,eq,697] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,show_id,eq,697] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,show_id,ne,697] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"], [3, "Compare three delay reasons according to some properties", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,delay_reason,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,delay_reason,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,delay_reason,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,delay_reason,eq,.*] and CHILDREN {B1,B2}\n    B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\nA2 LIKE [F,delay_reason,eq,.*] and CHILDREN {B3,B4}\n    B3 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B4 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\nA3 LIKE [F,delay_reason,eq,.*] and CHILDREN {B5,B6}\n    B5 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B6 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n"], [5, "Show two properties of free apps compared to all of the apps.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,type,contains,Free] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,type,eq,Free] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [G,.*]\n"], [8, "Explore the data, make sure to address two interesting aspects of app id 7312.", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,app_id,eq,7312] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,.*]\nA2 LIKE [F,app_id,eq,7312] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [8, "Explore the data, make sure to address two interesting aspects of flights occured at the 14th day of the month.", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,day_of_month,eq,14] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,day_of_month,eq,14] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [6, "Explore three different app categories in different ways.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,category,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,category,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,category,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,category,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,category,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,category,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [9, "Show interesting sub-groups of flights departed from CLT.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,destination_airport,eq,CLT] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,origin_airport,eq,CLT] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [2, "Investigate what makes apps to be rated under 1.5 and drill down to specific reason", "BEGIN CHILDREN {A1}\n A1 LIKE [F,rating,lt,1.5] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,rating,lt,1.5] and CHILDREN {B1}\n    B1 LIKE [G,category] and CHILDREN {C1}\n        C1 LIKE [G,content_rating]\n"], [8, "Explore the data, make sure to address two interesting aspects of apps categorized as social.", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,category,eq,SOCIAL] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,category,eq,'social'] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [3, "Compare three subsets of type according to some properties.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,type,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,type,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,type,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,type,eq,'TV Show'] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,type,eq,'Movie'] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,type,eq,'Documentary'] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [4, "Display the maximum duration of two distinct subsets of movies/shows.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,max,duration]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,max,duration]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,type,eq,Movie] and CHILDREN {B1}\n    B1 LIKE [G,duration,max,duration]\nA2 LIKE [F,type,eq,\"TV Show\"] and CHILDREN {B2}\n    B2 LIKE [G,duration,max,duration]\n\n"], [1, "Find one show title which has one different property compared to the other titles.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,title,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,title,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,type,eq,'TV Show'] and CHILDREN {B1}\n    B1 LIKE [G,title,count,title]\n"], [9, "Show interesting sub-groups of flights of EV airline.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,airline,eq,EV] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,airline,eq,EV] and CHILDREN {B1,B2}\n    B1 LIKE [G,origin_airport,.*]\n    B2 LIKE [G,destination_airport,.*]\n"], [5, "show two properties of flights that were scheduled to the morning compared to all the flights", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,scheduled_departure,eq,MORNING] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,scheduled_departure,eq,MORNING] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [G,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"], [9, "Show interesting sub-groups of flights with a delay reason (delay reason isn't Nan)", "BEGIN CHILDREN {A1}\n A1 LIKE [F,delay_reason,ne,nan] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,delay_reason,ne,NaN] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [3, "Compare three directors according to some properties", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,director,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,director,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,director,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,director,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,director,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,director,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [5, "Display two properties of flights with flight id contain 123 in comparison to all other flights.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,flight_id,contains,123] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,flight_id,eq,123] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,flight_id,ne,123] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"], [9, "Show interesting sub-groups of \"F-Stop Gallery\" app.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,name,eq,F-Stop Gallery] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,name,eq,\"F-Stop Gallery\"] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [3, "Compare three subsets of price according to some properties", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,price,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,price,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,price,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,(?<COL>.*),eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,price,mean,price]\nA2 LIKE [F,(?<COL>.*),eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,price,mean,price]\nA3 LIKE [F,(?<COL>.*),eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,price,mean,price]\n"], [3, "Compare three subsets of scheduled arrival according to some properties.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,scheduled_arrival,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,scheduled_arrival,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,scheduled_arrival,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,(?<COL2>.*),.*,scheduled_arrival]\nA2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,(?<COL2>.*),.*,scheduled_arrival]\nA3 LIKE [F,.*,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,(?<COL2>.*),.*,scheduled_arrival]\n"], [5, "Display two characteristics of applications that last updated after 2018, in comparison to all of the applications.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,last_updated,gt,2018] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,last_updated,gt,2018] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,last_updated,le,2018] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"], [2, "Examine the factors that result in apps being free and drill down into the specific reasons behind it.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,type,eq,Free] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,type,eq,Free] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [5, "Display two characteristics of Match flights, compared to flights of all of the months.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,month,eq,3] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,airline,eq,Match] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,month,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"], [5, "Display two characteristics of apps that are not Free in comparison to all of the apps.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,type,ne,Free] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,type,ne,Free] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [G,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"], [4, "Show the minimum app size of two different subsets of apps.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,min,app_size_kb]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,min,app_size_kb]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,category,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,app_size_kb,min,app_size_kb]\nA2 LIKE [F,category,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,app_size_kb,min,app_size_kb]\n\n"], [2, "Examine the factors that cause flights to have a large delay and delve into the specific reasons behind it.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,departure_delay,eq,LARGE_DELAY] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,delay_reason,ne,NaN] and CHILDREN {B1}\n    B1 LIKE [G,delay_reason,count,flight_id]\n"], [3, "Compare three subsets of minimum required Android version according to some properties.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,min_android_ver,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,min_android_ver,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,min_android_ver,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,min_android_ver,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,min_android_ver,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,min_android_ver,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [8, "Explore the data, make sure to address two interesting aspects of flights that were scheduled to depart at the afternoon.", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,scheduled_departure,eq,AFTERNOON] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,scheduled_departure,eq,AFTERNOON] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [5, "Show two properties of flights that were scheduled to depart at the evening, compared to all the flights.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,scheduled_departure,eq,EVENING] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,scheduled_departure,eq,EVENING] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [G,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"], [6, "Explore in different ways three different app ids.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,app_id,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,app_id,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,app_id,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,app_id,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,app_id,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,app_id,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [2, "Investigate the factors that contribute to movies/shows featuring Joseph May and drill down into the specific reasons behind it.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,cast,contains,Joseph May] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,cast,eq,\"Joseph May\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [2, "Investigate the factors that contribute to movies/shows featuring Aishwarya Rai Bachchan and drill down into the specific reasons behind it.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,cast,eq,Aishwarya Rai Bachchan] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,cast,eq,Aishwarya Rai Bachchan] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [4, "Display the longest duration among two distinct subsets of movies/shows.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,max,duration]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,max,duration]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,type,eq,Movie] and CHILDREN {B1}\n    B1 LIKE [G,duration,max,duration]\nA2 LIKE [F,type,eq,\"TV Show\"] and CHILDREN {B2}\n    B2 LIKE [G,duration,max,duration]\n\n"], [5, "Show two properties of movies/shows directed by Timothy Woodward Jr, compared to all of the movies/shows.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,director,eq,Timothy Woodward Jr] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,director,eq,\"Timothy Woodward Jr\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,director,ne,\"Timothy Woodward Jr\"] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"], [3, "Compare three names according to some properties.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,name,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,name,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,name,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,name,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,name,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,name,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [4, "Display the count of ratings for two distinct subsets of movies/shows.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,count,rating]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,count,rating]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,type,eq,Movie] and CHILDREN {B1}\n    B1 LIKE [G,rating,count,rating]\nA2 LIKE [F,type,eq,\"TV Show\"] and CHILDREN {B2}\n    B2 LIKE [G,rating,count,rating]\n\n"], [8, "Explore the data, make sure to address two interesting aspects of the show \"Dating Around: Brazil\".", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,title,eq,Dating Around: Brazil] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,title,eq,\"Dating Around: Brazil\"] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [6, "Explore three different app ratings in different ways.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,rating,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,rating,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,rating,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,rating,eq,4.1] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,rating,eq,3.9] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,rating,eq,4.7] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [1, "Find one departure delay value which has one different property compared to the other departure delay values (this column is bucketed).", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,departure_delay,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,departure_delay,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [G,departure_delay,unique,delay_reason]"], [3, "Compare three departure delays according to some properties.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,departure_delay,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,departure_delay,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,departure_delay,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [G,.*,departure_delay]\nA2 LIKE [G,.*,departure_delay]\nA3 LIKE [G,.*,departure_delay]\n\n"], [1, "Find one show rating which has one different property compared to the other ratings.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,rating,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,rating,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,type,eq,'TV Show'] and CHILDREN {B1}\n    B1 LIKE [G,rating,count,rating] and CHILDREN {C1}\n        C1 LIKE [G,.*]\n"], [5, "Display two characteristics of applications that have a rating higher than 2 in comparison to all other applications.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,rating,gt,2.0] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,rating,gt,2] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,rating,le,2] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"], [8, "Explore the data, make sure to address two interesting aspects of flight 34862.", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,flight_id,eq,34862] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,flight_id,eq,34862] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [5, "Display two characteristics of flights where the departed from Boston in comparison to all of the flights.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,origin_airport,eq,BOS] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,origin_airport,eq,BOS] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [6, "Explore three different last update dates in different ways.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,last_updated,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,last_updated,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,last_updated,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,last_updated,eq,2018] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,last_updated,eq,2017] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,last_updated,eq,2016] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [8, "Explore the data, make sure to address two interesting aspects of apps which their category contains the word \"GAME\".", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,category,contains,GAME] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,category,contains,GAME] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [2, "Investigate what makes shows to have TV-MA rating and drill down to specific reason.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,rating,eq,TV-MA] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,rating,eq,TV-MA] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [8, "Explore the data, make sure to address two interesting aspects of flights with flight 379355.", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,flight_id,eq,379355] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,flight_id,eq,379355] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [9, "Show interesting sub-groups of movies/shows not rated as TV-14.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,rating,ne,TV-14] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,rating,ne,TV-14] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [6, "Explore three different casts in different ways.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,cast,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,cast,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,cast,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,cast,eq,\"Jo\u00e3o Miguel, Bianca Comparato, Michel Gomes, Rodolfo Valente, Vaneza Oliveira, Rafael Lozano, Viviane Porto, Mel Fronckowiak, Sergio Mamberti, Zez\u00e9 Motta, Celso Frateschi\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,cast,eq,\"Demi\u00e1n Bichir, H\u00e9ctor Bonilla, Oscar Serrano, Azalia Ortiz, Octavio Michel, Carmen Beato\"] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,cast,eq,\"Tedd Chan, Stella Chung, Henley Hii, Lawrence Koh, Tommy Kuan, Josh Lai, Mark Lee, Susan Leong, Benjamin Lim\"] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [5, "Show two properties of flights that were scheduled to arrive at the afternoon, compared to all the flights.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,scheduled_arrival,eq,AFTERNOON] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,scheduled_arrival,eq,AFTERNOON] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [G,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"], [9, "Show interesting sub-groups of apps with minimum Android version set to 4.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,min_android_ver,eq,4] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,min_android_ver,eq,4] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [2, "Examine the factors that contribute to flights occurring at April and drill down into the specific reasons behind it.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,month,contains,4] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,month,eq,4] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [8, "Explore the data, make sure to address two interesting aspects of flights ocuured at the 28th of the month.", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,day_of_month,eq,28] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [G,.*] and CHILDREN {B1,B2}\n    B1 LIKE [F,day_of_month,eq,28] and CHILDREN {C1}\n        C1 LIKE [G,.*]\n    B2 LIKE [F,day_of_month,eq,28] and CHILDREN {C2}\n        C2 LIKE [G,.*]\n"], [9, "Display interesting sub-groups of movies/shows featuring Jang Dong-gun.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,cast,contains,Jang Dong-gun] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,cast,contains,Jang Dong-gun] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [8, "Investigate the data and focus on two intriguing aspects of shows featuring Alan C. Lim.", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,cast,contains,Alan C. Lim] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,cast,eq,\"Alan C. Lim\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,cast,eq,\"Alan C. Lim\"] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"], [3, "Compare two subsets of types according to some properties.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,type,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,type,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,type,eq,.*] and CHILDREN {B1,B2}\n    B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\nA2 LIKE [F,type,eq,.*] and CHILDREN {B3,B4}\n    B3 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B4 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n"], [8, "Explore the data, make sure to address two interesting aspects of movies/shows with cast contains Nicholas Braun.", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,cast,contains,Nicholas Braun] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,cast,contains,Nicholas Braun] and CHILDREN {B1,B2}\n    B1 LIKE [G,type,count,show_id]\n    B2 LIKE [G,country,count,show_id]\n"], [4, "Display the average duration of two distinct subsets of movies/shows.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,mean,duration]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,mean,duration]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,type,eq,Movie] and CHILDREN {B1}\n    B1 LIKE [G,(?<COL>.*),avg,duration]\nA2 LIKE [F,type,eq,\"TV Show\"] and CHILDREN {B2}\n    B2 LIKE [G,(?<COL>.*),avg,duration]\n\n"], [4, "Display the highest number of reviews from two distinct groups of applications.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,max,reviews]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,max,reviews]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,(?<COL1>.*),max,(?<COL2>.*)] and CHILDREN {B1}\n    B1 LIKE [G,(?<COL3>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\nA2 LIKE [G,(?<COL1>.*),max,(?<COL2>.*)] and CHILDREN {B2}\n    B2 LIKE [G,(?<COL3>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n"], [1, "Find one price of apps which has one different property compared to the other prices.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,price,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,price,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [G,price,.*] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [1, "Find one scheduled arrival time which has one different property compared to the other scheduled arrival times.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,scheduled_arrival,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,scheduled_arrival,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [G,scheduled_arrival,unique,1]"], [3, "Compare three subsets of added dates according to some properties.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,date_added,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,date_added,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,date_added,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,date_added,eq,\"August 14, 2020\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,date_added,eq,\"December 23, 2016\"] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,date_added,eq,\"December 20, 2018\"] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [5, "Show two properties of flights that their scheduled trip time was 'MID_FLIGHT ', in comparison to all of the flights", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,scheduled_trip_time,eq,MID_FLIGHT] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,scheduled_trip_time,eq,MID_FLIGHT] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [G,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"], [6, "Wxplore three different type of movies/shows in different ways.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,type,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,type,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,type,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,type,eq,'Movie'] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,type,eq,'TV Show'] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,type,ne,'Movie'] and [F,type,ne,'TV Show'] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [5, "Show two properties of flights with that has delay reason, compared to all the flights", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,delay_reason,ne,nan] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,delay_reason,ne,NaN] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [G,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"], [2, "Investigate what makes apps to have many reviews (at least one thousand) and drill down to specific reason.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,reviews,gt,1000] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,reviews,ge,1000] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [9, "show interesting sub-groups of apps which aren't categorized as family apps.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,category,ne,FAMILY] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,category,ne,Family] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [1, "Find an app that has a property that is different from the other apps.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,app_id,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,app_id,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [G,(?<COL>.*),.*] and CHILDREN {B1}\n    B1 LIKE [F,(?<COL>.*),neq,.*]\n"], [2, "Investigate what makes flights to have departure delay and drill down to specific reason", "BEGIN CHILDREN {A1}\n A1 LIKE [F,departure_delay,ne,ON_TIME] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,departure_delay,ne,ON_TIME] and CHILDREN {B1}\n    B1 LIKE [G,delay_reason,count,flight_id]\n"], [5, "Display two properties of  show id 3577 in comparison to all of the shows.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,show_id,eq,3577] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,show_id,eq,3577] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,show_id,ne,3577] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"], [9, "Show interesting sub-groups of flights with destinated to SFO.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,destination_airport,eq,SFO] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,destination_airport,eq,SFO] and CHILDREN {B1,B2}\n    B1 LIKE [G,airline,count,flight_id]\n    B2 LIKE [G,day_of_week,count,flight_id]\n"], [6, "Explore in different ways three different destination airports of flights.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,destination_airport,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,destination_airport,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,destination_airport,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,destination_airport,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,destination_airport,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,destination_airport,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [9, "Show interesting sub-groups of movies/shows that not released at 2011.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,release_year,ne,2011] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,release_year,ne,2011] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [8, "Explore the data, make sure to address two interesting aspects of shows with rated as TV-14.", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,rating,eq,TV-14] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,rating,eq,TV-14] and CHILDREN {B1,B2}\n    B1 LIKE [G,type,count,show_id]\n    B2 LIKE [G,country,count,show_id]\n"], [6, "explore in different ways three different movies/shows.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,show_id,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,show_id,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,show_id,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,type,eq,'Movie'] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,type,eq,'TV Show'] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,type,eq,'Movie'] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [4, "Display the lowest price among two distinct subsets of applications.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,min,price]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,min,price]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,(?<COL>.*),eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,(?<COL>.*),min,(?<AGG_COL>.*)]\nA2 LIKE [F,(?<COL>.*),eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,(?<COL>.*),min,(?<AGG_COL>.*)]\n"], [8, "Explore the data, make sure to address two interesting aspects of show id 788.", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,show_id,contains,788] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,show_id,eq,788] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [4, "Display the minimum departure delay of two distinct groups of flights.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,min,departure_delay]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,min,departure_delay]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,origin_airport,eq,BOS] and CHILDREN {B1}\n    B1 LIKE [G,.*] and CHILDREN {C1}\n        C1 LIKE [G,departure_delay,min,departure_delay]\nA2 LIKE [G,origin_airport,ne,BOS] and CHILDREN {B2}\n    B2 LIKE [G,.*] and CHILDREN {C2}\n        C2 LIKE [G,departure_delay,min,departure_delay]\n\n"], [5, "Show two properties of app id 355 compared to all of the apps.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,app_id,eq,355] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,app_id,eq,355] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,app_id,ne,355] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"], [4, "Display the average price of two distinct groups of applications.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,mean,price]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,mean,price]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,category,avg,price] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [G,category,avg,price] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"], [6, "Explore three different schedule arrival times in different ways.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,scheduled_arrival,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,scheduled_arrival,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,scheduled_arrival,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [G,scheduled_arrival,.*]\nA2 LIKE [G,scheduled_arrival,.*]\nA3 LIKE [G,scheduled_arrival,.*]\n\n"], [2, "Investigate what makes flights to be scheduled to arrive at the morning and drill down to specific reason.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,scheduled_arrival,eq,MORNING] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,scheduled_arrival,eq,MORNING] and CHILDREN {B1}\n    B1 LIKE [G,delay_reason]"], [9, "Show interesting sub-groups of apps that were last updated at 2018.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,last_updated,eq,2018] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,last_updated,eq,2018] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [8, "Explore the data, make sure to address two interesting aspects of flights with had departure delay.", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,departure_delay,ne,ON_TIME] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,departure_delay,ne,ON_TIME] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [1, "Find an airline that has one unique properties compared to the other airlines.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,airline,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,airline,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [G,airline,count,flight_id] and CHILDREN {B1}\n    B1 LIKE [F,airline,eq,.*] and CHILDREN {C1}\n        C1 LIKE [G,.*]\n"], [6, "Explore three different app names in different ways.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,name,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,name,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,name,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,name,eq,\"Photo Editor & Candy Camera & Grid & ScrapBook\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,name,eq,\"Coloring book moana\"] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,name,eq,\"U Launcher Lite \u2013 FREE Live Cool Themes, Hide Apps\"] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [5, "Show two properties of apps categortized as finance, in comparison to all of the apps.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,category,eq,FINANCE] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,category,eq,finance] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [G,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"], [3, "Compare three content ratings according to some properties.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,content_rating,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,content_rating,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,content_rating,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,content_rating,eq,.*] and CHILDREN {B1,B2}\n    B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\nA2 LIKE [F,content_rating,eq,.*] and CHILDREN {B3,B4}\n    B3 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B4 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\nA3 LIKE [F,content_rating,eq,.*] and CHILDREN {B5,B6}\n    B5 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B6 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n"], [6, "Explore three different descriptions in different ways.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,description,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,description,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,description,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,description,eq,\"In a future where the elite inhabit an island paradise far from the crowded slums, you get one chance to join the 3% saved from squalor.\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,description,eq,\"After a devastating earthquake hits Mexico City, trapped survivors from all walks of life wait to be rescued while trying desperately to stay alive.\"] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,description,eq,\"When an army recruit is found dead, his fellow soldiers are forced to confront a terrifying secret that's haunting their jungle island training camp.\"] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [6, "Explore three different title of movies/shows in different ways.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,title,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,title,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,title,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,type,eq,\"Movie\"] and CHILDREN {B1}\n    B1 LIKE [G,title,count,show_id]\nA2 LIKE [F,type,eq,\"TV Show\"] and CHILDREN {B2}\n    B2 LIKE [G,title,count,show_id]\nA3 LIKE [F,type,eq,\"Movie\"] and CHILDREN {B3}\n    B3 LIKE [G,country,count,show_id]\n"], [5, "Show two properties of apps pliced below 0.99 compared to all of the apps.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,price,lt,0.99] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,price,lt,0.99] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,price,ge,0.99] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"], [6, "explore three different flight delay reasons in different ways.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,delay_reason,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,delay_reason,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,delay_reason,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,delay_reason,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,delay_reason,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,delay_reason,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [9, "show interesting sub-groups of apps with minimum Android version other than 2.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,min_android_ver,ne,2] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,min_android_ver,ne,2] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [3, "Compare three countries according to some properties.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,country,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,country,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,country,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,country,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,country,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,country,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [9, "Show interesting sub-groups of flights with medium scheduled trip time.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,scheduled_trip_time,eq,MID_FLIGHT] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [G,scheduled_trip_time,eq,MID_FLIGHT] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [6, "explore three different scheduled departures of flights in different ways.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [4, "Show number of apps of two different subsets.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,count,app_id]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,count,app_id]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,(?<COL1>.*),count,app_id]\nA2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,(?<COL1>.*),count,app_id]\n"], [4, "Show the minimum number of install of two different subsets of apps.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,min,install]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,min,install]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,.*,min,.*]\nA2 LIKE [G,.*,min,.*]\n"], [8, "Explore the data, make sure to address two interesting aspects of shows with description contains \"COVID-19\".", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,description,contains,COVID-19] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,description,contains,COVID-19] and CHILDREN {B1,B2}\n    B1 LIKE [G,type,count,show_id]\n    B2 LIKE [G,country,count,show_id]\n"], [1, "Find a scheduled trip time for flights that has one distinct property compared to the other scheduled trip times.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,scheduled_trip_time,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,scheduled_trip_time,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [G,scheduled_trip_time,count,flight_id] and CHILDREN {B1}\n    B1 LIKE [G,scheduled_trip_time,unique,property}\n"], [9, "show interesting sub-groups of flights originated from Boston.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,origin_airport,eq,BOS] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,origin_airport,eq,BOS] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [3, "Compare three ratings according to some properties.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,rating,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,rating,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,rating,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [G,.*]\nA2 LIKE [G,.*]\nA3 LIKE [G,.*]\n\n"], [9, "Show interesting sub-groups of apps with paid type.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,type,eq,Paid] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,type,eq,Paid] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [9, "Show interesting sub-groups of flights that have LONG_FLIGHT scheduled trip time.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,scheduled_trip_time,eq,LONG_FLIGHT] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,scheduled_trip_time,eq,LONG_FLIGHT] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [9, "Show interesting sub-groups of apps with minimum required Android version lower than 2.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,min_android_ver,lt,2] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,min_android_ver,lt,2] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [9, "Show interesting sub-groups of TV shows.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,type,eq,TV Show] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,type,eq,\"TV Show\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [6, "Explore three different scheduled trip times in different ways.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,scheduled_trip_time,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,scheduled_trip_time,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,scheduled_trip_time,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,scheduled_trip_time,eq,MID_FLIGHT] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,scheduled_trip_time,eq,LONG_FLIGHT] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,scheduled_trip_time,eq,NIGHT] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [1, "Find one added date which has one different property compared to the other added dates.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,date_added,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,date_added,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [G,date_added,count,show_id] and CHILDREN {B1}\n    B1 LIKE [G,date_added,count,duration]\n"], [8, "Explore the data, make sure to address two interesting aspects of the app named \"Makeup Photo Editor: Makeup Camera & Makeup Editor\".", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,name,eq,Makeup Photo Editor: Makeup Camera & Makeup Editor] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,name,eq,\"Makeup Photo Editor: Makeup Camera & Makeup Editor\"] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [4, "Display the average minimum Android version required for two distinct groups of applications.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,mean,min_android_ver]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,mean,min_android_ver]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,.*,avg,min_android_ver]\nA2 LIKE [G,.*,avg,min_android_ver]\n"], [1, "Find a content rating of apps that has one unique property compared to the other content ratings.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,content_rating,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,content_rating,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [G,content_rating,count,property] and CHILDREN {B1,B2}\n    B1 LIKE [G,content_rating,count,property] and CHILDREN {C1}\n        C1 LIKE [G,content_rating,count,property]\n    B2 LIKE [G,content_rating,count,property] and CHILDREN {C2}\n        C2 LIKE [G,content_rating,count,property]\n"], [5, "Show two properties of flights without delay reason equal compared to all of the flights.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,delay_reason,eq,nan] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,delay_reason,neq,NaN] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,delay_reason,eq,NaN] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"], [4, "Display the highest rating among two distinct groups of applications.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,max,rating]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,max,rating]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,.*,max,.*]\nA2 LIKE [G,.*,max,.*]\n"], [5, "Display two attributes of movies/shows that have a show id 1069, compared to all of the movies/shows.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,show_id,eq,1069] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,show_id,eq,1069] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,show_id,ne,1069] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"], [4, "Display the lowest scheduled trip time among two distinct groups of flights.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,min,scheduled_trip_time]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,min,scheduled_trip_time]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,origin_airport,eq,BOS] and CHILDREN {B1}\n    B1 LIKE [G,(?<COL>.*),min,scheduled_trip_time]\nA2 LIKE [G,origin_airport,ne,BOS] and CHILDREN {B2}\n    B2 LIKE [G,(?<COL>.*),min,scheduled_trip_time]\n\n"], [3, "Compare three reviews numbers according to some properties.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,reviews,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,reviews,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,reviews,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [G,.*,reviews]\nA2 LIKE [G,.*,reviews]\nA3 LIKE [G,.*,reviews]\n\n"], [9, "Show interesting sub-groups of movies/shows with duration lower than 1.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,duration,lt,1] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,type,eq,Movie] and CHILDREN {B1}\n    B1 LIKE [F,duration,lt,1] and CHILDREN {C1}\n        C1 LIKE [G,.*]\n"], [3, "Compare three days of the week according to some properties.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,day_of_week,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,day_of_week,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,day_of_week,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,day_of_week,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,day_of_week,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,day_of_week,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [1, "Find one last updated date which has one different property compared to the other last upated dates.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,last_updated,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,last_updated,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [G,last_updated,unique] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [2, "Examine the factors that contribute to apps having a rating higher than 4.5 and drill down into the specific reasons behind it.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,rating,gt,4.5] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,rating,gt,4.5] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n    B1 LIKE [G,.*]\n"], [9, "Show interesting sub-groups of movies/shows not released at 2019.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,release_year,ne,2019] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,release_year,ne,2019] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [8, "Explore the data, make sure to address two interesting aspects of the app \"Speed Boat Racing\".", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,name,contains,Speed Boat Racing] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,name,eq,\"Speed Boat Racing\"] and CHILDREN {B1,B2}\n    B1 LIKE [G,category,count,app_id]\n    B2 LIKE [G,rating,mean,rating]\n"], [1, "Find one show/movie description which has one different property compared to the other show/movie descriptions.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,description,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,description,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [G,description,count,duration] and CHILDREN {B1}\n    B1 LIKE [G,description,count,rating]\n"], [4, "Display the highest rating among two distinct subsets of movies/shows.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,max,rating]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,max,rating]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,type,eq,Movie] and CHILDREN {B1}\n    B1 LIKE [G,(?<COL>.*),max,rating]\nA2 LIKE [F,type,eq,\"TV Show\"] and CHILDREN {B2}\n    B2 LIKE [G,(?<COL>.*),max,rating]\n\n"], [5, "Show two properties of movies/shows directed by Gary Youn, compared to all of the shows", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,director,eq,Gary Young] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,director,eq,\"Gary Youn\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,type,eq,\"Movie\"] or [F,type,eq,\"TV Show\"] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"], [4, "Display the average scheduled trip time of two distinct subsets of flights.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,mean,scheduled_trip_time]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,mean,scheduled_trip_time]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,origin_airport,eq,BOS] and CHILDREN {B1}\n    B1 LIKE [G,.*] and CHILDREN {C1}\n        C1 LIKE [G,.*]\nA2 LIKE [G,origin_airport,ne,BOS] and CHILDREN {B2}\n    B2 LIKE [G,.*] and CHILDREN {C2}\n        C2 LIKE [G,.*]\n"], [4, "Display the average departure delay for two distinct subsets of flights.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,mean,departure_delay]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,mean,departure_delay]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,(?<COL1>.*),avg,(?<COL2>.*)] and CHILDREN {B1}\n    B1 LIKE [F,(?<COL3>.*),eq,.*]\nA2 LIKE [G,(?<COL1>.*),avg,(?<COL2>.*)] and CHILDREN {B2}\n    B2 LIKE [F,(?<COL3>.*),eq,.*]\n\n"], [3, "Compare three different months according to some properties.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,month,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,month,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,month,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,month,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,month,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,month,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [8, "Explore the data, make sure to address two interesting aspects of apps last updated before 2018.", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,last_updated,lt,2018] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [G,.*] and CHILDREN {B1,B2}\n    B1 LIKE [F,last_updated,lt,2018] and CHILDREN {C1}\n        C1 LIKE [G,.*]\n    B2 LIKE [F,last_updated,lt,2018] and CHILDREN {C2}\n        C2 LIKE [G,.*]\n"], [4, "Display the lowest minimum Android version required among two distinct subsets of applications.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,min,min_android_ver]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,min,min_android_ver]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,(?<COL>.*),min,min_android_ver]\nA2 LIKE [G,(?<COL>.*),min,min_android_ver]\n"], [8, "Explore the data, make sure to address two interesting aspects of apps which last updated after 2018.", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,last_updated,gt,2018] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\nA2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\nA1 LIKE [F,last_updated,gt,2018] and CHILDREN {B1,B2}\n    B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n"], [6, "Explore in different ways three different subsets of the listed_in attribute.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,listed_in,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,listed_in,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,listed_in,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,listed_in,eq,'TV Dramas'] and CHILDREN {B1}\n    B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\nA2 LIKE [F,listed_in,eq,'International Movies'] and CHILDREN {B2}\n    B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\nA3 LIKE [F,listed_in,eq,'Independent Movies'] and CHILDREN {B3}\n    B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n"], [2, "Investigate what makes flights to have scheduled departure in the afternoon and drill down to specific reason.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,scheduled_departure,eq,AFTERNOON] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,scheduled_departure,eq,AFTERNOON] and CHILDREN {B1}\n    B1 LIKE [G,delay_reason]"], [6, "Explore three different months in different ways.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,month,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,month,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,month,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,month,eq,1] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,month,eq,2] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,month,eq,3] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [1, "Find a day of the month that has one unique property compared to the other days of the month.", "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,day_of_month,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,day_of_month,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1}\nA1 LIKE [G,day_of_month,count,flight_id] and CHILDREN {B1}\n    B1 LIKE [G,day_of_month,count_unique,.*]\n"], [8, "Explore the data, make sure to address two interesting aspects of flight 26228.", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,flight_id,eq,26228] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,flight_id,eq,26228] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"], [8, "Explore the data, make sure to address two interesting aspects of movies/shows released at 2008.", "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,release_year,eq,2008] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,release_year,eq,2008] and CHILDREN {B1,B2}\n    B1 LIKE [G,type,count,show_id]\n    B2 LIKE [G,rating,count,show_id]\n"], [6, "Explore three different apps content ratings in different ways.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,content_rating,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,content_rating,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,content_rating,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,content_rating,eq,Everyone] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,content_rating,eq,Teen] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,content_rating,eq,Mature 17+] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"], [9, "Show interesting sub-groups of movies/shows released at 2016.", "BEGIN CHILDREN {A1}\n A1 LIKE [F,release_year,contains,2016] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]", "BEGIN CHILDREN {A1}\nA1 LIKE [F,release_year,eq,2016] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"], [6, "Explore three different installs count in different ways.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,installs,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,installs,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,installs,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [G,installs,mean,reviews]\nA2 LIKE [G,installs,sum,reviews]\nA3 LIKE [G,installs,max,reviews]\n\n"], [3, "Compare three subsets of flights according to some properties.", "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,flight_number,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,flight_number,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,flight_number,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]", "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,origin_airport,eq,BOS] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,origin_airport,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,origin_airport,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"]]
+[
+  [
+    4,
+    "Display the highest price among two distinct subsets of applications.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,max,price]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,max,price]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,category,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,price,max,price]\nA2 LIKE [F,category,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,price,max,price]\n\n"
+  ],
+  [
+    5,
+    "Display two properties of show id 1132 in comparison to all the shows.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,show_id,eq,1132] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,show_id,eq,1132] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,show_id,ne,1132] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    1,
+    "Find a size of apps that have a distinct property compared to the other app sizes.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,app_size_kb,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,app_size_kb,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [G,app_size_kb,.*] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to focus on two intriguing aspects of apps with required Android version higher than 4",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,min_android_ver,gt,4] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,min_android_ver,gt,4] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,min_android_ver,gt,4] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    1,
+    "Find a destination airport that has a distinct property compared to the other destination airports.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,destination_airport,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,destination_airport,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [G,destination_airport,(?<AGG_FUNC>.*),(?<AGG_COL>.*)] and CHILDREN {B1}\n    B1 LIKE [G,destination_airport,(?<AGG_FUNC>.*),(?<AGG_COL>.*)] and CHILDREN {C1}\n        C1 LIKE [F,destination_airport,neq,.*]\n"
+  ],
+  [
+    8,
+    "Analyze the data, ensuring to focus on two intriguing aspects of apps that are not categorized as Free.",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,type,ne,Free] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,type,ne,Free] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    2,
+    "Examine the factors that contribute to apps reaching one million installations and delve into the specific reasons behind it.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,installs,eq,1000000] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,installs,eq,1000000] and CHILDREN {B1,B2,B3,B4}\n    B1 LIKE [G,category,count,app_id]\n    B2 LIKE [G,rating,mean,app_id]\n    B3 LIKE [G,reviews,sum,app_id]\n    B4 LIKE [G,content_rating,count,app_id]\n"
+  ],
+  [
+    3,
+    "Compare three different flights based on certain characteristics.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,flight_id,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,flight_id,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,flight_id,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,flight_id,eq,65] and CHILDREN {B1,B2}\n    B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\nA2 LIKE [F,flight_id,eq,71] and CHILDREN {B3,B4}\n    B3 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B4 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\nA3 LIKE [F,flight_id,eq,104] and CHILDREN {B5,B6}\n    B5 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B6 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n"
+  ],
+  [
+    8,
+    "Explore the data and ensure to examine two intriguing aspects of movies/shows released at 2020.",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,release_year,eq,2020] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,release_year,eq,2020] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,release_year,eq,2020] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    2,
+    "Examine the factors that cause flights to have a small delay and delve into the specific reasons behind it.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,departure_delay,eq,SMALL_DELAY] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,delay_reason,eq,SMALL_DELAY] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    8,
+    "Explore the data and ensure to examine two intriguing aspects of flights departed from ORD",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,destination_airport,eq,ORD] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,origin_airport,eq,ORD] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    5,
+    "Display two attributes of movies/shows that with the cast: Nina Kiri, Ry Barrett, Jorja Cadence, Will King, and Nina Richmond, in comparison to all the shows.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,cast,eq,\"Nina Kiri, Ry Barrett, Jorja Cadence, Will King, Nina Richmond\"] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,cast,eq,\"Nina Kiri, Ry Barrett, Jorja Cadence, Will King, Nina Richmond\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    4,
+    "Display the count of flights for two distinct subsets of flights.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,count,flight_id]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,count,flight_id]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,.*,count,flight_id]\nA2 LIKE [G,.*,count,flight_id]\n\n"
+  ],
+  [
+    3,
+    "Compare three subsets of scheduled departure attribute.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    6,
+    "Explore in different ways three different ratings. ",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,rating,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,rating,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,rating,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,rating,eq,'TV-MA'] and CHILDREN {B1}\n    B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\nA2 LIKE [F,rating,eq,'R'] and CHILDREN {B2}\n    B2 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\nA3 LIKE [F,rating,eq,'PG-13'] and CHILDREN {B3}\n    B3 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n"
+  ],
+  [
+    5,
+    "Display two properties of app id 5248 when compared to all of the applications.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,app_id,ne,5248] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,app_id,eq,5248] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    9,
+    "Display the interesting sub-groups of the show \"Case Closed\".",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,title,eq,Case Closed] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,title,eq,\"Case Closed\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    3,
+    "Compare the properties of three different casts.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,cast,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,cast,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,cast,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,cast,eq,\"Jo\u00e3o Miguel, Bianca Comparato, Michel Gomes, Rodolfo Valente, Vaneza Oliveira, Rafael Lozano, Viviane Porto, Mel Fronckowiak, Sergio Mamberti, Zez\u00e9 Motta, Celso Frateschi\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,cast,eq,\"Demi\u00e1n Bichir, H\u00e9ctor Bonilla, Oscar Serrano, Azalia Ortiz, Octavio Michel, Carmen Beato\"] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,cast,eq,\"Tedd Chan, Stella Chung, Henley Hii, Lawrence Koh, Tommy Kuan, Josh Lai, Mark Lee, Susan Leong, Benjamin Lim\"] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    3,
+    "Compare three movies/shows release years.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,release_year,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,release_year,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,release_year,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,type,eq,\"Movie\"] and CHILDREN {B1}\n    B1 LIKE [G,release_year,count,show_id]\nA2 LIKE [F,type,eq,\"TV Show\"] and CHILDREN {B2}\n    B2 LIKE [G,release_year,count,show_id]\nA3 LIKE [F,type,eq,\"Movie\"] and CHILDREN {B3}\n    B3 LIKE [G,release_year,count,show_id]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of movies/shows with description contains the word \"Scottish\".",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,description,contains,Scottish] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,description,contains,Scottish] and CHILDREN {B1,B2}\n    B1 LIKE [G,type,count,type]\n    B2 LIKE [G,country,count,country]\n"
+  ],
+  [
+    4,
+    "Display the highest departure delay among two distinct subsets of flights.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,max,departure_delay]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,max,departure_delay]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,(?<COL1>.*),max,(?<COL2>.*)] and CHILDREN {B1}\n    B1 LIKE [F,(?<COL3>.*),eq,.*]\nA2 LIKE [G,(?<COL1>.*),max,(?<COL2>.*)] and CHILDREN {B2}\n    B2 LIKE [F,(?<COL3>.*),eq,.*]\n\n"
+  ],
+  [
+    6,
+    "Explore in different ways three different flight numbers. ",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,flight_number,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,flight_number,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,flight_number,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,flight_number,eq,103] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,flight_number,eq,2454] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,flight_number,eq,727] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    5,
+    "Display two properties of movies.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,type,eq,Movie] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,type,eq,Movie] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n\n"
+  ],
+  [
+    5,
+    "Show two properties of movies/shows that were added at August 31, 2020, compared to all of the movies/shows.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,date_added,eq,August 31, 2020] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,date_added,eq,\"August 31, 2020\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,date_added,ne,\"August 31, 2020\"] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"
+  ],
+  [
+    2,
+    "Examine the factors that contribute to shows being categorized as International Movies and drill down into the specific reasons behind it.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,listed_in,contains,International Movies] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,listed_in,eq,International Movies] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    8,
+    "Analyze the data, make sure to address two interesting aspects of show id 2216",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,show_id,eq,2216] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,show_id,eq,2216] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    1,
+    "Identify an apps category that possesses a distinct characteristic in comparison to al the other categories.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,type,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,type,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [G,category,count,app_id] and CHILDREN {B1}\n    B1 LIKE [G,category,count,app_id]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of flights that had departure delay.",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,departure_delay,ne,ON_TIME] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,departure_delay,ne,ON_TIME] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    9,
+    "Display interesting sub-groups of Thursday flights.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,day_of_week,eq,5] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,day_of_week,eq,4] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    9,
+    "Show interesting sub-groups of apps with Everyone content rating ",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,content_rating,eq,Everyone] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,content_rating,eq,Everyone] and CHILDREN {B1,B2}\n    B1 LIKE [G,category,count,app_id]\n    B2 LIKE [G,rating,mean,rating]\n"
+  ],
+  [
+    6,
+    "Explore three different flights in different ways",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,flight_id,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,flight_id,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,flight_id,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,flight_id,eq,65] and CHILDREN {B1,B2}\n    B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\nA2 LIKE [F,flight_id,eq,71] and CHILDREN {B3,B4}\n    B3 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B4 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\nA3 LIKE [F,flight_id,eq,104] and CHILDREN {B5,B6}\n    B5 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B6 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n"
+  ],
+  [
+    5,
+    "Display two characteristics of apps with size at least 7900 kilobytes, when compared to all apps.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,app_size_kb,gt,7900] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,app_size_kb,ge,7900] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    9,
+    "Show interesting sub-groups of flights that weren't scheduled to arrive at the morning",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,scheduled_arrival,ne,MORNING] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,scheduled_arrival,ne,MORNING] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    1,
+    "Find one cast which has one different property compared to the other casts",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,cast,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,cast,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [G,cast,count,director] and CHILDREN {B1}\n    B1 LIKE [G,cast,count,release_year] and CHILDREN {C1}\n        C1 LIKE [G,cast,count,rating]\n"
+  ],
+  [
+    9,
+    "Show interesting sub-groups of movies/shows which were added at March 1, 2016",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,date_added,eq,March 1, 2016] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,date_added,eq,\"March 1, 2016\"] and CHILDREN {B1}\n    B1 LIKE [G,type,count,show_id]\n"
+  ],
+  [
+    9,
+    "Show interesting sub-groups of flights with flight id 56207.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,flight_id,eq,56207] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,flight_id,eq,56207] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    1,
+    "Find a country that has one different property compared to the other countries.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,country,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,country,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [G,country,count,duration] and CHILDREN {B1}\n    B1 LIKE [G,country,count,rating]\n"
+  ],
+  [
+    3,
+    "Compare three origin airports according to some properties.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,origin_airport,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,origin_airport,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,origin_airport,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,origin_airport,eq,BOS] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,origin_airport,eq,(?<VALUE2>.*)] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,origin_airport,eq,(?<VALUE3>.*)] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    2,
+    "Examine the factors that cause apps to have a price higher than 100$ and delve into the specific reasons behind it.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,price,gt,100.0] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,price,gt,100] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    5,
+    "Show two properties of show id 697 compared to all of the movies/shows.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,show_id,eq,697] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,show_id,eq,697] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,show_id,ne,697] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"
+  ],
+  [
+    3,
+    "Compare three delay reasons according to some properties",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,delay_reason,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,delay_reason,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,delay_reason,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,delay_reason,eq,.*] and CHILDREN {B1,B2}\n    B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\nA2 LIKE [F,delay_reason,eq,.*] and CHILDREN {B3,B4}\n    B3 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B4 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\nA3 LIKE [F,delay_reason,eq,.*] and CHILDREN {B5,B6}\n    B5 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B6 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n"
+  ],
+  [
+    5,
+    "Show two properties of free apps compared to all of the apps.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,type,contains,Free] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,type,eq,Free] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [G,.*]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of app id 7312.",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,app_id,eq,7312] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,.*]\nA2 LIKE [F,app_id,eq,7312] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of flights occured at the 14th day of the month.",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,day_of_month,eq,14] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,day_of_month,eq,14] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    6,
+    "Explore three different app categories in different ways.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,category,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,category,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,category,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,category,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,category,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,category,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    9,
+    "Show interesting sub-groups of flights departed from CLT.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,destination_airport,eq,CLT] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,origin_airport,eq,CLT] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    2,
+    "Investigate what makes apps to be rated under 1.5 and drill down to specific reason",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,rating,lt,1.5] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,rating,lt,1.5] and CHILDREN {B1}\n    B1 LIKE [G,category] and CHILDREN {C1}\n        C1 LIKE [G,content_rating]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of apps categorized as social.",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,category,eq,SOCIAL] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,category,eq,'social'] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    3,
+    "Compare three subsets of type according to some properties.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,type,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,type,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,type,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,type,eq,'TV Show'] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,type,eq,'Movie'] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,type,eq,'Documentary'] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    4,
+    "Display the maximum duration of two distinct subsets of movies/shows.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,max,duration]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,max,duration]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,type,eq,Movie] and CHILDREN {B1}\n    B1 LIKE [G,duration,max,duration]\nA2 LIKE [F,type,eq,\"TV Show\"] and CHILDREN {B2}\n    B2 LIKE [G,duration,max,duration]\n\n"
+  ],
+  [
+    1,
+    "Find one show title which has one different property compared to the other titles.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,title,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,title,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,type,eq,'TV Show'] and CHILDREN {B1}\n    B1 LIKE [G,title,count,title]\n"
+  ],
+  [
+    9,
+    "Show interesting sub-groups of flights of EV airline.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,airline,eq,EV] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,airline,eq,EV] and CHILDREN {B1,B2}\n    B1 LIKE [G,origin_airport,.*]\n    B2 LIKE [G,destination_airport,.*]\n"
+  ],
+  [
+    5,
+    "show two properties of flights that were scheduled to the morning compared to all the flights",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,scheduled_departure,eq,MORNING] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,scheduled_departure,eq,MORNING] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [G,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"
+  ],
+  [
+    9,
+    "Show interesting sub-groups of flights with a delay reason (delay reason isn't Nan)",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,delay_reason,ne,nan] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,delay_reason,ne,NaN] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    3,
+    "Compare three directors according to some properties",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,director,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,director,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,director,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,director,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,director,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,director,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    5,
+    "Display two properties of flights with flight id contain 123 in comparison to all other flights.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,flight_id,contains,123] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,flight_id,eq,123] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,flight_id,ne,123] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"
+  ],
+  [
+    9,
+    "Show interesting sub-groups of \"F-Stop Gallery\" app.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,name,eq,F-Stop Gallery] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,name,eq,\"F-Stop Gallery\"] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    3,
+    "Compare three subsets of price according to some properties",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,price,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,price,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,price,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,(?<COL>.*),eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,price,mean,price]\nA2 LIKE [F,(?<COL>.*),eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,price,mean,price]\nA3 LIKE [F,(?<COL>.*),eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,price,mean,price]\n"
+  ],
+  [
+    3,
+    "Compare three subsets of scheduled arrival according to some properties.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,scheduled_arrival,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,scheduled_arrival,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,scheduled_arrival,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,(?<COL2>.*),.*,scheduled_arrival]\nA2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,(?<COL2>.*),.*,scheduled_arrival]\nA3 LIKE [F,.*,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,(?<COL2>.*),.*,scheduled_arrival]\n"
+  ],
+  [
+    5,
+    "Display two characteristics of applications that last updated after 2018, in comparison to all of the applications.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,last_updated,gt,2018] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,last_updated,gt,2018] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,last_updated,le,2018] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    2,
+    "Examine the factors that result in apps being free and drill down into the specific reasons behind it.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,type,eq,Free] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,type,eq,Free] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    5,
+    "Display two characteristics of Match flights, compared to flights of all of the months.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,month,eq,3] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,airline,eq,Match] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,month,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"
+  ],
+  [
+    5,
+    "Display two characteristics of apps that are not Free in comparison to all of the apps.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,type,ne,Free] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,type,ne,Free] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [G,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    4,
+    "Show the minimum app size of two different subsets of apps.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,min,app_size_kb]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,min,app_size_kb]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,category,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,app_size_kb,min,app_size_kb]\nA2 LIKE [F,category,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,app_size_kb,min,app_size_kb]\n\n"
+  ],
+  [
+    2,
+    "Examine the factors that cause flights to have a large delay and delve into the specific reasons behind it.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,departure_delay,eq,LARGE_DELAY] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,delay_reason,ne,NaN] and CHILDREN {B1}\n    B1 LIKE [G,delay_reason,count,flight_id]\n"
+  ],
+  [
+    3,
+    "Compare three subsets of minimum required Android version according to some properties.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,min_android_ver,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,min_android_ver,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,min_android_ver,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,min_android_ver,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,min_android_ver,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,min_android_ver,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of flights that were scheduled to depart at the afternoon.",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,scheduled_departure,eq,AFTERNOON] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,scheduled_departure,eq,AFTERNOON] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    5,
+    "Show two properties of flights that were scheduled to depart at the evening, compared to all the flights.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,scheduled_departure,eq,EVENING] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,scheduled_departure,eq,EVENING] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [G,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"
+  ],
+  [
+    6,
+    "Explore in different ways three different app ids.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,app_id,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,app_id,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,app_id,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,app_id,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,app_id,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,app_id,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    2,
+    "Investigate the factors that contribute to movies/shows featuring Joseph May and drill down into the specific reasons behind it.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,cast,contains,Joseph May] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,cast,eq,\"Joseph May\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    2,
+    "Investigate the factors that contribute to movies/shows featuring Aishwarya Rai Bachchan and drill down into the specific reasons behind it.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,cast,eq,Aishwarya Rai Bachchan] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,cast,eq,Aishwarya Rai Bachchan] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    4,
+    "Display the longest duration among two distinct subsets of movies/shows.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,max,duration]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,max,duration]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,type,eq,Movie] and CHILDREN {B1}\n    B1 LIKE [G,duration,max,duration]\nA2 LIKE [F,type,eq,\"TV Show\"] and CHILDREN {B2}\n    B2 LIKE [G,duration,max,duration]\n\n"
+  ],
+  [
+    5,
+    "Show two properties of movies/shows directed by Timothy Woodward Jr, compared to all of the movies/shows.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,director,eq,Timothy Woodward Jr] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,director,eq,\"Timothy Woodward Jr\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,director,ne,\"Timothy Woodward Jr\"] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    3,
+    "Compare three names according to some properties.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,name,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,name,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,name,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,name,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,name,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,name,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    4,
+    "Display the count of ratings for two distinct subsets of movies/shows.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,count,rating]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,count,rating]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,type,eq,Movie] and CHILDREN {B1}\n    B1 LIKE [G,rating,count,rating]\nA2 LIKE [F,type,eq,\"TV Show\"] and CHILDREN {B2}\n    B2 LIKE [G,rating,count,rating]\n\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of the show \"Dating Around: Brazil\".",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,title,eq,Dating Around: Brazil] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,title,eq,\"Dating Around: Brazil\"] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    6,
+    "Explore three different app ratings in different ways.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,rating,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,rating,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,rating,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,rating,eq,4.1] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,rating,eq,3.9] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,rating,eq,4.7] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    1,
+    "Find one departure delay value which has one different property compared to the other departure delay values (this column is bucketed).",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,departure_delay,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,departure_delay,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [G,departure_delay,unique,delay_reason]"
+  ],
+  [
+    3,
+    "Compare three departure delays according to some properties.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,departure_delay,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,departure_delay,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,departure_delay,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [G,.*,departure_delay]\nA2 LIKE [G,.*,departure_delay]\nA3 LIKE [G,.*,departure_delay]\n\n"
+  ],
+  [
+    1,
+    "Find one show rating which has one different property compared to the other ratings.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,rating,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,rating,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,type,eq,'TV Show'] and CHILDREN {B1}\n    B1 LIKE [G,rating,count,rating] and CHILDREN {C1}\n        C1 LIKE [G,.*]\n"
+  ],
+  [
+    5,
+    "Display two characteristics of applications that have a rating higher than 2 in comparison to all other applications.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,rating,gt,2.0] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,rating,gt,2] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,rating,le,2] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of flight 34862.",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,flight_id,eq,34862] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,flight_id,eq,34862] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    5,
+    "Display two characteristics of flights where the departed from Boston in comparison to all of the flights.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,origin_airport,eq,BOS] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,origin_airport,eq,BOS] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    6,
+    "Explore three different last update dates in different ways.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,last_updated,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,last_updated,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,last_updated,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,last_updated,eq,2018] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,last_updated,eq,2017] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,last_updated,eq,2016] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of apps which their category contains the word \"GAME\".",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,category,contains,GAME] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,category,contains,GAME] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    2,
+    "Investigate what makes shows to have TV-MA rating and drill down to specific reason.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,rating,eq,TV-MA] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,rating,eq,TV-MA] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of flights with flight 379355.",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,flight_id,eq,379355] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,flight_id,eq,379355] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    9,
+    "Show interesting sub-groups of movies/shows not rated as TV-14.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,rating,ne,TV-14] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,rating,ne,TV-14] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    6,
+    "Explore three different casts in different ways.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,cast,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,cast,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,cast,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,cast,eq,\"Jo\u00e3o Miguel, Bianca Comparato, Michel Gomes, Rodolfo Valente, Vaneza Oliveira, Rafael Lozano, Viviane Porto, Mel Fronckowiak, Sergio Mamberti, Zez\u00e9 Motta, Celso Frateschi\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,cast,eq,\"Demi\u00e1n Bichir, H\u00e9ctor Bonilla, Oscar Serrano, Azalia Ortiz, Octavio Michel, Carmen Beato\"] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,cast,eq,\"Tedd Chan, Stella Chung, Henley Hii, Lawrence Koh, Tommy Kuan, Josh Lai, Mark Lee, Susan Leong, Benjamin Lim\"] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    5,
+    "Show two properties of flights that were scheduled to arrive at the afternoon, compared to all the flights.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,scheduled_arrival,eq,AFTERNOON] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,scheduled_arrival,eq,AFTERNOON] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [G,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"
+  ],
+  [
+    9,
+    "Show interesting sub-groups of apps with minimum Android version set to 4.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,min_android_ver,eq,4] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,min_android_ver,eq,4] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    2,
+    "Examine the factors that contribute to flights occurring at April and drill down into the specific reasons behind it.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,month,contains,4] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,month,eq,4] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of flights ocuured at the 28th of the month.",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,day_of_month,eq,28] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [G,.*] and CHILDREN {B1,B2}\n    B1 LIKE [F,day_of_month,eq,28] and CHILDREN {C1}\n        C1 LIKE [G,.*]\n    B2 LIKE [F,day_of_month,eq,28] and CHILDREN {C2}\n        C2 LIKE [G,.*]\n"
+  ],
+  [
+    9,
+    "Display interesting sub-groups of movies/shows featuring Jang Dong-gun.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,cast,contains,Jang Dong-gun] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,cast,contains,Jang Dong-gun] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    8,
+    "Investigate the data and focus on two intriguing aspects of shows featuring Alan C. Lim.",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,cast,contains,Alan C. Lim] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,cast,eq,\"Alan C. Lim\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,cast,eq,\"Alan C. Lim\"] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"
+  ],
+  [
+    3,
+    "Compare two subsets of types according to some properties.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,type,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,type,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,type,eq,.*] and CHILDREN {B1,B2}\n    B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\nA2 LIKE [F,type,eq,.*] and CHILDREN {B3,B4}\n    B3 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B4 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of movies/shows with cast contains Nicholas Braun.",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,cast,contains,Nicholas Braun] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,cast,contains,Nicholas Braun] and CHILDREN {B1,B2}\n    B1 LIKE [G,type,count,show_id]\n    B2 LIKE [G,country,count,show_id]\n"
+  ],
+  [
+    4,
+    "Display the average duration of two distinct subsets of movies/shows.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,mean,duration]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,mean,duration]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,type,eq,Movie] and CHILDREN {B1}\n    B1 LIKE [G,(?<COL>.*),avg,duration]\nA2 LIKE [F,type,eq,\"TV Show\"] and CHILDREN {B2}\n    B2 LIKE [G,(?<COL>.*),avg,duration]\n\n"
+  ],
+  [
+    4,
+    "Display the highest number of reviews from two distinct groups of applications.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,max,reviews]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,max,reviews]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,(?<COL1>.*),max,(?<COL2>.*)] and CHILDREN {B1}\n    B1 LIKE [G,(?<COL3>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\nA2 LIKE [G,(?<COL1>.*),max,(?<COL2>.*)] and CHILDREN {B2}\n    B2 LIKE [G,(?<COL3>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n"
+  ],
+  [
+    1,
+    "Find one price of apps which has one different property compared to the other prices.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,price,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,price,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [G,price,.*] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    1,
+    "Find one scheduled arrival time which has one different property compared to the other scheduled arrival times.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,scheduled_arrival,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,scheduled_arrival,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [G,scheduled_arrival,unique,1]"
+  ],
+  [
+    3,
+    "Compare three subsets of added dates according to some properties.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,date_added,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,date_added,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,date_added,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,date_added,eq,\"August 14, 2020\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,date_added,eq,\"December 23, 2016\"] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,date_added,eq,\"December 20, 2018\"] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    5,
+    "Show two properties of flights that their scheduled trip time was 'MID_FLIGHT ', in comparison to all of the flights",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,scheduled_trip_time,eq,MID_FLIGHT] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,scheduled_trip_time,eq,MID_FLIGHT] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [G,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"
+  ],
+  [
+    6,
+    "Wxplore three different type of movies/shows in different ways.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,type,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,type,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,type,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,type,eq,'Movie'] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,type,eq,'TV Show'] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,type,ne,'Movie'] and [F,type,ne,'TV Show'] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    5,
+    "Show two properties of flights with that has delay reason, compared to all the flights",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,delay_reason,ne,nan] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,delay_reason,ne,NaN] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [G,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"
+  ],
+  [
+    2,
+    "Investigate what makes apps to have many reviews (at least one thousand) and drill down to specific reason.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,reviews,gt,1000] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,reviews,ge,1000] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    9,
+    "show interesting sub-groups of apps which aren't categorized as family apps.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,category,ne,FAMILY] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,category,ne,Family] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    1,
+    "Find an app that has a property that is different from the other apps.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,app_id,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,app_id,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [G,(?<COL>.*),.*] and CHILDREN {B1}\n    B1 LIKE [F,(?<COL>.*),neq,.*]\n"
+  ],
+  [
+    2,
+    "Investigate what makes flights to have departure delay and drill down to specific reason",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,departure_delay,ne,ON_TIME] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,departure_delay,ne,ON_TIME] and CHILDREN {B1}\n    B1 LIKE [G,delay_reason,count,flight_id]\n"
+  ],
+  [
+    5,
+    "Display two properties of  show id 3577 in comparison to all of the shows.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,show_id,eq,3577] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,show_id,eq,3577] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,show_id,ne,3577] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"
+  ],
+  [
+    9,
+    "Show interesting sub-groups of flights with destinated to SFO.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,destination_airport,eq,SFO] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,destination_airport,eq,SFO] and CHILDREN {B1,B2}\n    B1 LIKE [G,airline,count,flight_id]\n    B2 LIKE [G,day_of_week,count,flight_id]\n"
+  ],
+  [
+    6,
+    "Explore in different ways three different destination airports of flights.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,destination_airport,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,destination_airport,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,destination_airport,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,destination_airport,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,destination_airport,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,destination_airport,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    9,
+    "Show interesting sub-groups of movies/shows that not released at 2011.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,release_year,ne,2011] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,release_year,ne,2011] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of shows with rated as TV-14.",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,rating,eq,TV-14] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,rating,eq,TV-14] and CHILDREN {B1,B2}\n    B1 LIKE [G,type,count,show_id]\n    B2 LIKE [G,country,count,show_id]\n"
+  ],
+  [
+    6,
+    "explore in different ways three different movies/shows.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,show_id,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,show_id,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,show_id,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,type,eq,'Movie'] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,type,eq,'TV Show'] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,type,eq,'Movie'] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    4,
+    "Display the lowest price among two distinct subsets of applications.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,min,price]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,min,price]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,(?<COL>.*),eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,(?<COL>.*),min,(?<AGG_COL>.*)]\nA2 LIKE [F,(?<COL>.*),eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,(?<COL>.*),min,(?<AGG_COL>.*)]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of show id 788.",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,show_id,contains,788] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,show_id,eq,788] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    4,
+    "Display the minimum departure delay of two distinct groups of flights.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,min,departure_delay]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,min,departure_delay]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,origin_airport,eq,BOS] and CHILDREN {B1}\n    B1 LIKE [G,.*] and CHILDREN {C1}\n        C1 LIKE [G,departure_delay,min,departure_delay]\nA2 LIKE [G,origin_airport,ne,BOS] and CHILDREN {B2}\n    B2 LIKE [G,.*] and CHILDREN {C2}\n        C2 LIKE [G,departure_delay,min,departure_delay]\n\n"
+  ],
+  [
+    5,
+    "Show two properties of app id 355 compared to all of the apps.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,app_id,eq,355] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,app_id,eq,355] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,app_id,ne,355] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    4,
+    "Display the average price of two distinct groups of applications.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,mean,price]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,mean,price]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,category,avg,price] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [G,category,avg,price] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    6,
+    "Explore three different schedule arrival times in different ways.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,scheduled_arrival,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,scheduled_arrival,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,scheduled_arrival,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [G,scheduled_arrival,.*]\nA2 LIKE [G,scheduled_arrival,.*]\nA3 LIKE [G,scheduled_arrival,.*]\n\n"
+  ],
+  [
+    2,
+    "Investigate what makes flights to be scheduled to arrive at the morning and drill down to specific reason.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,scheduled_arrival,eq,MORNING] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,scheduled_arrival,eq,MORNING] and CHILDREN {B1}\n    B1 LIKE [G,delay_reason]"
+  ],
+  [
+    9,
+    "Show interesting sub-groups of apps that were last updated at 2018.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,last_updated,eq,2018] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,last_updated,eq,2018] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of flights with had departure delay.",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,departure_delay,ne,ON_TIME] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,departure_delay,ne,ON_TIME] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    1,
+    "Find an airline that has one unique properties compared to the other airlines.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,airline,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,airline,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [G,airline,count,flight_id] and CHILDREN {B1}\n    B1 LIKE [F,airline,eq,.*] and CHILDREN {C1}\n        C1 LIKE [G,.*]\n"
+  ],
+  [
+    6,
+    "Explore three different app names in different ways.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,name,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,name,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,name,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,name,eq,\"Photo Editor & Candy Camera & Grid & ScrapBook\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,name,eq,\"Coloring book moana\"] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,name,eq,\"U Launcher Lite \u2013 FREE Live Cool Themes, Hide Apps\"] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    5,
+    "Show two properties of apps categortized as finance, in comparison to all of the apps.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,category,eq,FINANCE] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,category,eq,finance] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [G,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    3,
+    "Compare three content ratings according to some properties.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,content_rating,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,content_rating,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,content_rating,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,content_rating,eq,.*] and CHILDREN {B1,B2}\n    B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\nA2 LIKE [F,content_rating,eq,.*] and CHILDREN {B3,B4}\n    B3 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B4 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\nA3 LIKE [F,content_rating,eq,.*] and CHILDREN {B5,B6}\n    B5 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B6 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n"
+  ],
+  [
+    6,
+    "Explore three different descriptions in different ways.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,description,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,description,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,description,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,description,eq,\"In a future where the elite inhabit an island paradise far from the crowded slums, you get one chance to join the 3% saved from squalor.\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,description,eq,\"After a devastating earthquake hits Mexico City, trapped survivors from all walks of life wait to be rescued while trying desperately to stay alive.\"] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,description,eq,\"When an army recruit is found dead, his fellow soldiers are forced to confront a terrifying secret that's haunting their jungle island training camp.\"] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    6,
+    "Explore three different title of movies/shows in different ways.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,title,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,title,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,title,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,type,eq,\"Movie\"] and CHILDREN {B1}\n    B1 LIKE [G,title,count,show_id]\nA2 LIKE [F,type,eq,\"TV Show\"] and CHILDREN {B2}\n    B2 LIKE [G,title,count,show_id]\nA3 LIKE [F,type,eq,\"Movie\"] and CHILDREN {B3}\n    B3 LIKE [G,country,count,show_id]\n"
+  ],
+  [
+    5,
+    "Show two properties of apps pliced below 0.99 compared to all of the apps.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,price,lt,0.99] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,price,lt,0.99] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,price,ge,0.99] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"
+  ],
+  [
+    6,
+    "explore three different flight delay reasons in different ways.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,delay_reason,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,delay_reason,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,delay_reason,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,delay_reason,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,delay_reason,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,delay_reason,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    9,
+    "show interesting sub-groups of apps with minimum Android version other than 2.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,min_android_ver,ne,2] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,min_android_ver,ne,2] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    3,
+    "Compare three countries according to some properties.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,country,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,country,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,country,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,country,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,country,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,country,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    9,
+    "Show interesting sub-groups of flights with medium scheduled trip time.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,scheduled_trip_time,eq,MID_FLIGHT] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [G,scheduled_trip_time,eq,MID_FLIGHT] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    6,
+    "explore three different scheduled departures of flights in different ways.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,scheduled_departure,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    4,
+    "Show number of apps of two different subsets.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,count,app_id]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,count,app_id]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,(?<COL1>.*),count,app_id]\nA2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,(?<COL1>.*),count,app_id]\n"
+  ],
+  [
+    4,
+    "Show the minimum number of install of two different subsets of apps.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,min,install]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,min,install]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,.*,min,.*]\nA2 LIKE [G,.*,min,.*]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of shows with description contains \"COVID-19\".",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,description,contains,COVID-19] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,description,contains,COVID-19] and CHILDREN {B1,B2}\n    B1 LIKE [G,type,count,show_id]\n    B2 LIKE [G,country,count,show_id]\n"
+  ],
+  [
+    1,
+    "Find a scheduled trip time for flights that has one distinct property compared to the other scheduled trip times.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,scheduled_trip_time,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,scheduled_trip_time,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [G,scheduled_trip_time,count,flight_id] and CHILDREN {B1}\n    B1 LIKE [G,scheduled_trip_time,unique,property}\n"
+  ],
+  [
+    9,
+    "show interesting sub-groups of flights originated from Boston.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,origin_airport,eq,BOS] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,origin_airport,eq,BOS] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    3,
+    "Compare three ratings according to some properties.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,rating,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,rating,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,rating,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [G,.*]\nA2 LIKE [G,.*]\nA3 LIKE [G,.*]\n\n"
+  ],
+  [
+    9,
+    "Show interesting sub-groups of apps with paid type.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,type,eq,Paid] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,type,eq,Paid] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    9,
+    "Show interesting sub-groups of flights that have LONG_FLIGHT scheduled trip time.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,scheduled_trip_time,eq,LONG_FLIGHT] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,scheduled_trip_time,eq,LONG_FLIGHT] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    9,
+    "Show interesting sub-groups of apps with minimum required Android version lower than 2.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,min_android_ver,lt,2] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,min_android_ver,lt,2] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    9,
+    "Show interesting sub-groups of TV shows.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,type,eq,TV Show] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,type,eq,\"TV Show\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    6,
+    "Explore three different scheduled trip times in different ways.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,scheduled_trip_time,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,scheduled_trip_time,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,scheduled_trip_time,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,scheduled_trip_time,eq,MID_FLIGHT] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,scheduled_trip_time,eq,LONG_FLIGHT] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,scheduled_trip_time,eq,NIGHT] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    1,
+    "Find one added date which has one different property compared to the other added dates.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,date_added,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,date_added,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [G,date_added,count,show_id] and CHILDREN {B1}\n    B1 LIKE [G,date_added,count,duration]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of the app named \"Makeup Photo Editor: Makeup Camera & Makeup Editor\".",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,name,eq,Makeup Photo Editor: Makeup Camera & Makeup Editor] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,name,eq,\"Makeup Photo Editor: Makeup Camera & Makeup Editor\"] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    4,
+    "Display the average minimum Android version required for two distinct groups of applications.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,mean,min_android_ver]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,mean,min_android_ver]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,.*,avg,min_android_ver]\nA2 LIKE [G,.*,avg,min_android_ver]\n"
+  ],
+  [
+    1,
+    "Find a content rating of apps that has one unique property compared to the other content ratings.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,content_rating,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,content_rating,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [G,content_rating,count,property] and CHILDREN {B1,B2}\n    B1 LIKE [G,content_rating,count,property] and CHILDREN {C1}\n        C1 LIKE [G,content_rating,count,property]\n    B2 LIKE [G,content_rating,count,property] and CHILDREN {C2}\n        C2 LIKE [G,content_rating,count,property]\n"
+  ],
+  [
+    5,
+    "Show two properties of flights without delay reason equal compared to all of the flights.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,delay_reason,eq,nan] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,delay_reason,neq,NaN] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,delay_reason,eq,NaN] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n\n"
+  ],
+  [
+    4,
+    "Display the highest rating among two distinct groups of applications.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,max,rating]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,max,rating]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,.*,max,.*]\nA2 LIKE [G,.*,max,.*]\n"
+  ],
+  [
+    5,
+    "Display two attributes of movies/shows that have a show id 1069, compared to all of the movies/shows.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,show_id,eq,1069] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,show_id,eq,1069] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,show_id,ne,1069] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    4,
+    "Display the lowest scheduled trip time among two distinct groups of flights.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,min,scheduled_trip_time]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,min,scheduled_trip_time]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,origin_airport,eq,BOS] and CHILDREN {B1}\n    B1 LIKE [G,(?<COL>.*),min,scheduled_trip_time]\nA2 LIKE [G,origin_airport,ne,BOS] and CHILDREN {B2}\n    B2 LIKE [G,(?<COL>.*),min,scheduled_trip_time]\n\n"
+  ],
+  [
+    3,
+    "Compare three reviews numbers according to some properties.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,reviews,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,reviews,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,reviews,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [G,.*,reviews]\nA2 LIKE [G,.*,reviews]\nA3 LIKE [G,.*,reviews]\n\n"
+  ],
+  [
+    9,
+    "Show interesting sub-groups of movies/shows with duration lower than 1.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,duration,lt,1] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,type,eq,Movie] and CHILDREN {B1}\n    B1 LIKE [F,duration,lt,1] and CHILDREN {C1}\n        C1 LIKE [G,.*]\n"
+  ],
+  [
+    3,
+    "Compare three days of the week according to some properties.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,day_of_week,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,day_of_week,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,day_of_week,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,day_of_week,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,day_of_week,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,day_of_week,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    1,
+    "Find one last updated date which has one different property compared to the other last upated dates.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,last_updated,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,last_updated,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [G,last_updated,unique] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    2,
+    "Examine the factors that contribute to apps having a rating higher than 4.5 and drill down into the specific reasons behind it.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,rating,gt,4.5] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,rating,gt,4.5] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    9,
+    "Show interesting sub-groups of movies/shows not released at 2019.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,release_year,ne,2019] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,release_year,ne,2019] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of the app \"Speed Boat Racing\".",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,name,contains,Speed Boat Racing] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,name,eq,\"Speed Boat Racing\"] and CHILDREN {B1,B2}\n    B1 LIKE [G,category,count,app_id]\n    B2 LIKE [G,rating,mean,rating]\n"
+  ],
+  [
+    1,
+    "Find one show/movie description which has one different property compared to the other show/movie descriptions.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,description,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,description,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [G,description,count,duration] and CHILDREN {B1}\n    B1 LIKE [G,description,count,rating]\n"
+  ],
+  [
+    4,
+    "Display the highest rating among two distinct subsets of movies/shows.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,max,rating]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,max,rating]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,type,eq,Movie] and CHILDREN {B1}\n    B1 LIKE [G,(?<COL>.*),max,rating]\nA2 LIKE [F,type,eq,\"TV Show\"] and CHILDREN {B2}\n    B2 LIKE [G,(?<COL>.*),max,rating]\n\n"
+  ],
+  [
+    5,
+    "Show two properties of movies/shows directed by Gary Youn, compared to all of the shows",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n A2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n A3 LIKE [F,director,eq,Gary Young] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n  B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [F,director,eq,\"Gary Youn\"] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,type,eq,\"Movie\"] or [F,type,eq,\"TV Show\"] and CHILDREN {B2}\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    4,
+    "Display the average scheduled trip time of two distinct subsets of flights.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,mean,scheduled_trip_time]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,mean,scheduled_trip_time]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,origin_airport,eq,BOS] and CHILDREN {B1}\n    B1 LIKE [G,.*] and CHILDREN {C1}\n        C1 LIKE [G,.*]\nA2 LIKE [G,origin_airport,ne,BOS] and CHILDREN {B2}\n    B2 LIKE [G,.*] and CHILDREN {C2}\n        C2 LIKE [G,.*]\n"
+  ],
+  [
+    4,
+    "Display the average departure delay for two distinct subsets of flights.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,mean,departure_delay]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,mean,departure_delay]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,(?<COL1>.*),avg,(?<COL2>.*)] and CHILDREN {B1}\n    B1 LIKE [F,(?<COL3>.*),eq,.*]\nA2 LIKE [G,(?<COL1>.*),avg,(?<COL2>.*)] and CHILDREN {B2}\n    B2 LIKE [F,(?<COL3>.*),eq,.*]\n\n"
+  ],
+  [
+    3,
+    "Compare three different months according to some properties.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,month,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,month,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,month,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,month,eq,.*] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,month,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,month,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of apps last updated before 2018.",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,last_updated,lt,2018] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [G,.*] and CHILDREN {B1,B2}\n    B1 LIKE [F,last_updated,lt,2018] and CHILDREN {C1}\n        C1 LIKE [G,.*]\n    B2 LIKE [F,last_updated,lt,2018] and CHILDREN {C2}\n        C2 LIKE [G,.*]\n"
+  ],
+  [
+    4,
+    "Display the lowest minimum Android version required among two distinct subsets of applications.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,.*,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*,min,min_android_ver]\n A2 LIKE [F,.*,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*,min,min_android_ver]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,(?<COL>.*),min,min_android_ver]\nA2 LIKE [G,(?<COL>.*),min,min_android_ver]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of apps which last updated after 2018.",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,last_updated,gt,2018] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2}\nA1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\nA2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\nA1 LIKE [F,last_updated,gt,2018] and CHILDREN {B1,B2}\n    B1 LIKE [G,(?<COL1>.*),(?<AGG_FUNC1>.*),(?<AGG_COL1>.*)]\n    B2 LIKE [G,(?<COL2>.*),(?<AGG_FUNC2>.*),(?<AGG_COL2>.*)]\n"
+  ],
+  [
+    6,
+    "Explore in different ways three different subsets of the listed_in attribute.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,listed_in,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,listed_in,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,listed_in,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,listed_in,eq,'TV Dramas'] and CHILDREN {B1}\n    B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\nA2 LIKE [F,listed_in,eq,'International Movies'] and CHILDREN {B2}\n    B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\nA3 LIKE [F,listed_in,eq,'Independent Movies'] and CHILDREN {B3}\n    B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n"
+  ],
+  [
+    2,
+    "Investigate what makes flights to have scheduled departure in the afternoon and drill down to specific reason.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,scheduled_departure,eq,AFTERNOON] and CHILDREN {B1,B2}\n  B1 LIKE [G,(?<COL1>.*),.*]\n  B2 LIKE [F,(?<COL1>.*),eq,.*] and CHILDREN {C1, C2}\n  C1 LIKE [G,(?<COL2>.*),.*]\n  C2 LIKE [F,(?<COL2>.*),eq,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,scheduled_departure,eq,AFTERNOON] and CHILDREN {B1}\n    B1 LIKE [G,delay_reason]"
+  ],
+  [
+    6,
+    "Explore three different months in different ways.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,month,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,month,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,month,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,month,eq,1] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,month,eq,2] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,month,eq,3] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    1,
+    "Find a day of the month that has one unique property compared to the other days of the month.",
+    "BEGIN CHILDREN {A1,A2}\n A1 LIKE [F,day_of_month,eq,(?<VALUE>.*)] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,day_of_month,ne,(?<VALUE>.*)] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [G,day_of_month,count,flight_id] and CHILDREN {B1}\n    B1 LIKE [G,day_of_month,count_unique,.*]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of flight 26228.",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,flight_id,eq,26228] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,flight_id,eq,26228] and CHILDREN {B1,B2}\n    B1 LIKE [G,.*]\n    B2 LIKE [G,.*]\n"
+  ],
+  [
+    8,
+    "Explore the data, make sure to address two interesting aspects of movies/shows released at 2008.",
+    "BEGIN DESCENDANTS {A1}\n A1 LIKE [F,release_year,eq,2008] and CHILDREN {B1,B2}\n  B1 LIKE [G,.*]\n  B2 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,release_year,eq,2008] and CHILDREN {B1,B2}\n    B1 LIKE [G,type,count,show_id]\n    B2 LIKE [G,rating,count,show_id]\n"
+  ],
+  [
+    6,
+    "Explore three different apps content ratings in different ways.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,content_rating,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,content_rating,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,content_rating,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,content_rating,eq,Everyone] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,content_rating,eq,Teen] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,content_rating,eq,Mature 17+] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ],
+  [
+    9,
+    "Show interesting sub-groups of movies/shows released at 2016.",
+    "BEGIN CHILDREN {A1}\n A1 LIKE [F,release_year,contains,2016] and CHILDREN {B1}\n  B1 LIKE [G,.*] and CHILDREN {C1}\n  C1 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1}\nA1 LIKE [F,release_year,eq,2016] and CHILDREN {B1}\n    B1 LIKE [G,.*]\n"
+  ],
+  [
+    6,
+    "Explore three different installs count in different ways.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,installs,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,.*]\n A2 LIKE [F,installs,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,.*]\n A3 LIKE [F,installs,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,.*]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [G,installs,mean,reviews]\nA2 LIKE [G,installs,sum,reviews]\nA3 LIKE [G,installs,max,reviews]\n\n"
+  ],
+  [
+    3,
+    "Compare three subsets of flights according to some properties.",
+    "BEGIN CHILDREN {A1,A2,A3}\n A1 LIKE [F,flight_number,eq,.*] and CHILDREN {B1}\n  B1 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A2 LIKE [F,flight_number,eq,.*] and CHILDREN {B2}\n  B2 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]\n A3 LIKE [F,flight_number,eq,.*] and CHILDREN {B3}\n  B3 LIKE [G,(?<COL>.*),(?<AGG_FUNC>.*),(?<AGG_COL>.*)]",
+    "BEGIN CHILDREN {A1,A2,A3}\nA1 LIKE [F,origin_airport,eq,BOS] and CHILDREN {B1}\n    B1 LIKE [G,.*]\nA2 LIKE [F,origin_airport,eq,.*] and CHILDREN {B2}\n    B2 LIKE [G,.*]\nA3 LIKE [F,origin_airport,eq,.*] and CHILDREN {B3}\n    B3 LIKE [G,.*]\n"
+  ]
+]
