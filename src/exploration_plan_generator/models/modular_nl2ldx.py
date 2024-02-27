@@ -1,5 +1,5 @@
 from exploration_plan_generator.clients.abstact_llm_client import AbstractLLMClient
-from exploration_plan_generator.models.abstract_model import AbstractModel, SYSTEM_MESSAGE
+from exploration_plan_generator.models.abstract_model import AbstractModel
 from exploration_plan_generator.prompts.in_domain.flights.fligths_pandas2ldx_examples import flights_pandas2ldx_examples
 from exploration_plan_generator.prompts.in_domain.netflix.netflix_pandas2ldx_examples import netflix_pandas2ldx_examples
 from exploration_plan_generator.prompts.in_domain.play_store.play_store_pandas2ldx_examples import \
@@ -20,20 +20,11 @@ class ModularNL2Pd2LDX(AbstractModel):
 
     def nl2ldx(self, dataset, scheme, sample, task, exclude_examples_ids, is_out_domain):
         dataset_name = dataset.split('.')[0]
-        prompt = NL2PandasStructure_prompt.replace(DATASET_PLACEHOLDER, dataset).replace(SCHEME_PLACEHOLDER,
-                                                                                         str(scheme)).replace(
-            SAMPLE_PLACEHOLDER, str(sample)).replace(TASK_PLACEHOLDER, task)
-        pandas = self.llm_client.send_request(system_message=NL2PandasStructure_system_message, prompt=prompt).lstrip(
-            "```python").rstrip("```")
-        next_prompt = NL2PandasContent_prompt.replace(DATASET_PLACEHOLDER, dataset).replace(SCHEME_PLACEHOLDER,
-                                                                                            str(scheme)).replace(
-            SAMPLE_PLACEHOLDER, str(sample)).replace(TASK_PLACEHOLDER, task).replace(SOLUTION_PLACEHOLDER, pandas)
-        pandas_placeholdered = self.llm_client.send_request(system_message=NL2PandasContent_system_message,
-                                                            prompt=next_prompt)
-        if "```" in pandas_placeholdered: pandas_placeholdered = pandas_placeholdered[
-                                                                 pandas_placeholdered.find("```python") + 1:].rstrip(
-            "```")
-        print(pandas_placeholdered)
+        prompt = NL2PandasStructure_prompt.replace(DATASET_PLACEHOLDER, dataset).replace(SCHEME_PLACEHOLDER,str(scheme)).replace(SAMPLE_PLACEHOLDER, str(sample)).replace(TASK_PLACEHOLDER, task)
+        pandas = self.llm_client.send_request(system_message=NL2PandasStructure_system_message, prompt=prompt).lstrip("```").lstrip("python").strip("```")
+        next_prompt = NL2PandasContent_prompt.replace(DATASET_PLACEHOLDER, dataset).replace(SCHEME_PLACEHOLDER,str(scheme)).replace(SAMPLE_PLACEHOLDER, str(sample)).replace(TASK_PLACEHOLDER, task).replace(SOLUTION_PLACEHOLDER, pandas)
+        pandas_placeholdered = self.llm_client.send_request(system_message=NL2PandasContent_system_message, prompt=next_prompt)
+        if "```" in pandas_placeholdered: pandas_placeholdered = pandas_placeholdered[pandas_placeholdered.find("```") + 1:].lstrip("python").strip("```")
         ldx = self.pandas2LDX(dataset_name, pandas_placeholdered, exclude_examples_ids, is_out_domain)
         fixed_ldx = self.ldx_post_proccessing(ldx)
         return fixed_ldx
@@ -69,7 +60,12 @@ NL2PandasStructure_system_message = "You are an AI assistant for answering natur
 
 NL2PandasStructure_prompt = f"""Given the dataset '{DATASET_PLACEHOLDER}' with the scheme: {SCHEME_PLACEHOLDER} and sample:\n {SAMPLE_PLACEHOLDER}:
 provide pandas code for the task: {TASK_PLACEHOLDER}
-Instruction - use only filter/groupby/agg/idxmax/idxmin operations.
+Instructions:
+1. you can use only: filter/groupby/agg/idxmax/idxmin.
+2. supported aggregations: mean,max,min,count
+3. apply aggregations only via the function agg (don't use mean(),min(),size() and etc..) and always provide aggregated column.
+4. don't apply agg on ungrouped data frame.
+5. don't apply multiple filters or multiple grouping or multiple aggregations in a single time
 
 ```python
 """
@@ -83,7 +79,6 @@ Don't replace:
 3. functions: idxmax(),idxmin()
 
 Are are examples:
-
 
 Table epic_games, columns = [id, name, game_slug, price, release_date, platform, description, developer, publisher, genres]
 Task: "Find one game platform which has one different property compared to all the other platforms."
@@ -104,10 +99,10 @@ Let’s think step by step.
 "windows_games = df[df['platform'] == 'Windows']" is using 'platform' which is the column asked in the task part "Find one game platform" so it's not need to be replaced. The fixed value 'Windows' isn't explictly derived from the task so it would be replaced by the placeholder '<VALUE1>'.
 "other_platforms = df[df['platform'] != 'Windows']" is using 'platform' which is the column asked in the task so it's not need to be replaced. The fixed value 'Windows' already need to be replaced by '<VALUE1>'.
 "windows_games_agg = windows_games.groupby('developer').agg({{'price':'mean'}})" is using the column 'developer' which isn't explictly derived from the task so it would be replaced by the placeholder '<COL1>'.
-Also the column 'price' isn't explictly derived from the task so it would be replaced by the placeholder '<COL2>'. The aggregation function 'mean' isn't explictly derived from the task so it would be replaced by the placeholder '<AGG_FUNC1>'.
+Also the column 'price' isn't explictly derived from the task so it would be replaced by the placeholder '<AGG_COL1>'. The aggregation function 'mean' isn't explictly derived from the task so it would be replaced by the placeholder '<AGG_FUNC1>'.
 "other_platforms_agg = other_platforms.groupby('developer').agg({{'price':'mean'}})" is using the column 'developer' which already replaced by '<COL1>'.
-Also the column 'price' already replaced by placeholder '<COL2>'. The aggregation function 'mean' already replaced by the placeholder '<AGG_FUNC1>'.
-So the replacements are: {{'Windows':'<VALUE1>','developer':'<COL1>','price':'<COL2>','mean':'<AGG_FUNC1>'}}
+Also the column 'price' already replaced by placeholder '<AGG_COL1>'. The aggregation function 'mean' already replaced by the placeholder '<AGG_FUNC1>'.
+So the replacements are: {{'Windows':'<VALUE1>','developer':'<COL1>','price':'<AGG_COL1>','mean':'<AGG_FUNC1>'}}
 Overall the code would be replaced by the following:
 	    ```
 		import pandas as pd
@@ -117,8 +112,8 @@ Overall the code would be replaced by the following:
         windows_games = df[df['platform'] == '<VALUE1>']
         other_platforms = df[df['platform'] != '<VALUE1>']
 
-        windows_games_agg = windows_games.groupby('<COL1>').agg({{'<COL2>':'<AGG_FUNC1>'}})
-        other_platforms_agg = other_platforms.groupby('<COL1>').agg({{'<COL2>':'<AGG_FUNC1>'}})
+        windows_games_agg = windows_games.groupby('<COL1>').agg({{'<AGG_COL1>':'<AGG_FUNC1>'}})
+        other_platforms_agg = other_platforms.groupby('<COL1>').agg({{'<AGG_COL1>':'<AGG_FUNC1>'}})
 	    ```
 
 
@@ -146,11 +141,11 @@ Let’s think step by step.
 "greater_than_219000 = df[df['salary_in_usd'] > 219000]" is using 'salary_in_usd' column which is explicitly derived by the task part "earn...above $219,000" so it's not need to be replaced. The fixed value '219000' also explictly derived by the task so not need to be replaced.
 "job_title_counting = greater_than_219000.groupby('job_title').agg({{'employee_id':'count'}})" is using the column 'job_title' which isn't explictly derived from the task so it needs to be replaced by '<COL1>'. The column 'employee_id' also isn't derived from the task so it needs to be replaced by '<COL2>'.
 The aggregation function 'count' isn't derived from the task so it would be replaced by the placeholder '<AGG_FUNC1>'.
-"max_job_title = job_title_counting['employee_id'].idxmax()" is using the column 'employee_id' which is already replaced by the placeholder '<COL2>'.
+"max_job_title = job_title_counting['employee_id'].idxmax()" is using the column 'employee_id' which is already replaced by the placeholder '<AGG_COL1>'. The function '.idxmax()' is instructed to not be replaced.
 "max_job_title_employees = greater_than_219000[greater_than_219000['job_title'] == max_job_title]" is using the column 'job_title' which already replaced by '<COL1>'. max_job_title is a variable and not fixed value so it's not need to be replabed.
-"max_job_title_level_average = max_job_title_employees.groupby('experience_level').agg({{'salary':'mean'}})" is using the column 'experience_level' which isn't derived from the task so it needs to be replaced by '<COL3>'. The column 'salary' also isn't derived from the task so it needs to be replaced by '<COL4>'.
+"max_job_title_level_average = max_job_title_employees.groupby('experience_level').agg({{'salary':'mean'}})" is using the column 'experience_level' which isn't derived from the task so it needs to be replaced by '<COL2>'. The column 'salary' also isn't derived from the task so it needs to be replaced by '<AGG_COL2>'.
 The aggregation function 'mean' isn't derived from the task so it would be replaced by the placeholder '<AGG_FUNC2>'.
-So the replacements are: {{'job_title':'<COL1>','employee_id':'<COL2>','count':'<AGG_FUNC1>','experience_level':'<COL3>','salary':'<COL4>','mean':'<AGG_FUNC2>'}}
+So the replacements are: {{'job_title':'<COL1>','employee_id':'<AGG_COL1>','count':'<AGG_FUNC1>','experience_level':'<COL2>','salary':'<AGG_COL2>','mean':'<AGG_FUNC2>'}}
 Overall the code would be replaced by the following:
 	    ```
 		import pandas as pd
@@ -159,13 +154,13 @@ Overall the code would be replaced by the following:
 
         greater_than_219000 = df[df['salary_in_usd'] > 219000]
 
-        job_title_counting = greater_than_219000.groupby('<COL1>').agg({{'<COL2>':'<AGG_FUNC1>'}})
+        job_title_counting = greater_than_219000.groupby('<COL1>').agg({{'<AGG_COL1>':'<AGG_FUNC1>'}})
 
-        max_job_title = job_title_counting['<COL2>'].idxmax()
+        max_job_title = job_title_counting['<AGG_COL1>'].idxmax()
 
         max_job_title_employees = greater_than_219000[greater_than_219000['<COL1>'] == max_job_title]
 
-        max_job_title_level_average = max_job_title_employees.groupby('<COL3>').agg({{'<COL4>':'<AGG_FUNC2>'}})
+        max_job_title_level_average = max_job_title_employees.groupby('<COL2>').agg({{'<AGG_COL2>':'<AGG_FUNC2>'}})
 	    ```
 
 
@@ -191,10 +186,11 @@ Let’s think step by step.
 "first_product = df[df['Product'] == 'P5341']" is using 'Product' column which is derived by the task part "subsets of products" so it's not need to be replaced. The fixed value 'P5341' isn't derived by the task so it would be replaced by placeholder '<VALUE1>'.
 "second_product = df[df['Product'] == 'P5342']" is using 'Product' column which is derived by the task part "subsets of products so it's not need to be replaced. The fixed value 'P5342' isn't derived by the task so it would be replaced by placeholder '<VALUE2>'.
 "third_product = df[df['Product'] == 'P5343']" is using 'Product' column which is derived by the task part "subsets of products so it's not need to be replaced. The fixed value 'P5343' isn't derived by the task so it would be replaced by placeholder '<VALUE3>'.
-"first_product_max_cores_per_status = first_product.groupby('Status').agg({{'Cores','max'}})" is using the columns 'Status','Cores' which aren't derived by the task so it would be replaced by placeholders '<COL1>','<COL2>' respectivly. The aggregation function 'max' isn't derived from the task so it would be replaced by the placeholder '<AGG_FUNC1>'.
-"second_product_max_cores_per_status = second_product.groupby('Status').agg({{'Cores','max'}})" is using the columns 'Status','Cores' which are already replaced by placeholders '<COL1>','<COL2>' respectivly. The aggregation function 'max' is already replaced by the placeholder '<AGG_FUNC1>'.
-"third_product_max_cores_per_status = third_product.groupby('Status').agg({{'Cores','max'}})" is using the columns 'Status','Cores' which are already replaced by placeholders '<COL1>','<COL2>' respectivly. The aggregation function 'max' is already replaced by the placeholder '<AGG_FUNC1>'.
-So the replacements are: {{'P5341':'<VALUE1>','P5342':'<VALUE2>','P5343':'<VALUE3>','Status':'<COL1>','Cores':'<COL2>','max':'<AGG_FUNC1>'}}
+"first_product_max_cores_per_status = first_product.groupby('Status').agg({{'Cores','max'}})" is using the column 'Status' isn't derived by the task so it would be replaced by placeholders '<COL1>'. The column 'Cores' isn't derived by the task so it would be replaced by placeholders '<AGG_COL1>'.
+ The aggregation function 'max' isn't derived from the task so it would be replaced by the placeholder '<AGG_FUNC1>'.
+"second_product_max_cores_per_status = second_product.groupby('Status').agg({{'Cores','max'}})" is using the column 'Status','Cores' which are already replaced by placeholders '<COL1>','<AGG_COL1>' respectivly. The aggregation function 'max' is already replaced by the placeholder '<AGG_FUNC1>'.
+"third_product_max_cores_per_status = third_product.groupby('Status').agg({{'Cores','max'}})" is using the columns 'Status','Cores' which are already replaced by placeholders '<COL1>','<AGG_COL1>' respectivly. The aggregation function 'max' is already replaced by the placeholder '<AGG_FUNC1>'.
+So the replacements are: {{'P5341':'<VALUE1>','P5342':'<VALUE2>','P5343':'<VALUE3>','Status':'<COL1>','Cores':'<AGG_COL1>','max':'<AGG_FUNC1>'}}
 Overall the code would be replaced by the following:
 	    ```
 		import pandas as pd
@@ -205,9 +201,9 @@ Overall the code would be replaced by the following:
         second_product = df[df['Product'] == '<VALUE2>']
         third_product = df[df['Product'] == '<VALUE3>']
 
-        first_product_max_cores_per_status = first_product.groupby('<COL1>').agg({{'<COL2>','<AGG_FUNC1>'}})
-        second_product_max_cores_per_status = second_product.groupby('<COL1>').agg({{'<COL2>','<AGG_FUNC1>'}})
-        third_product_max_cores_per_status = third_product.groupby('<COL1>').agg({{'<COL2>','<AGG_FUNC1>'}})
+        first_product_max_cores_per_status = first_product.groupby('<COL1>').agg({{'<AGG_COL1>','<AGG_FUNC1>'}})
+        second_product_max_cores_per_status = second_product.groupby('<COL1>').agg({{'<AGG_COL1>','<AGG_FUNC1>'}})
+        third_product_max_cores_per_status = third_product.groupby('<COL1>').agg({{'<AGG_COL1>','<AGG_FUNC1>'}})
 	    ```
 
 
@@ -386,9 +382,9 @@ Answer:
 Let’s think step by step.
 "5_stars_repos = df[df['Stars'] == '5']" is using 'Stars' column which is derived by the task part "five stars" so it doesn't need to be replaced. The fixed value '5' also derived by the task part "five stars" so it doesn't need to be replaced.
 "5_stars_repos_grouped = 5_stars_repos.groupby('Created At')" is using 'Created At' column which is not derived by the task so it would be replaced by the placeholer '<COL1>'.
-"5_stars_repos_sub_grouped = 5_stars_repos_grouped.groupby('Name').agg({{'Forks':'sum'}})" is using 'Name' column which is not derived by the task so it would be replaced by the placeholer '<COL2>'. The column 'Forks' is not derived by the task so it would be replaced by the placeholer '<COL3>'.
+"5_stars_repos_sub_grouped = 5_stars_repos_grouped.groupby('Name').agg({{'Forks':'sum'}})" is using 'Name' column which is not derived by the task so it would be replaced by the placeholer '<COL2>'. The column 'Forks' is not derived by the task so it would be replaced by the placeholer '<AGG_COL1>'.
 The aggregation function 'sum' is already replaced by the placeholder '<AGG_FUNC1>'.
-So the replacements are: {{'Created At':'<COL1>','Name':'<COL2>','Forks':'<COL3>','sum':'<AGG_FUNC1>'}}
+So the replacements are: {{'Created At':'<COL1>','Name':'<COL2>','Forks':'<AGG_COL1>','sum':'<AGG_FUNC1>'}}
 Overall the code would be replaced by the following:
 	    ```
 		import pandas as pd
@@ -398,13 +394,15 @@ Overall the code would be replaced by the following:
         5_stars_repos = df[df['Stars'] == '5']
 
         5_stars_repos_grouped = 5_stars_repos.groupby('<COL1>')
-        5_stars_repos_sub_grouped = 5_stars_repos_grouped.groupby('<COL2>').agg({{'<COL3>':'<AGG_FUNC1>'}})
+        5_stars_repos_sub_grouped = 5_stars_repos_grouped.groupby('<COL2>').agg({{'<AGG_COL1>':'<AGG_FUNC1>'}})
 	    ```
 
 
 
 Table {DATASET_PLACEHOLDER}, columns = [{SCHEME_PLACEHOLDER}]
 Task: "{TASK_PLACEHOLDER}"
+Sample:
+        "{SAMPLE_PLACEHOLDER}"
 Solution:
 	    ```{SOLUTION_PLACEHOLDER}```
 Answer:
@@ -424,8 +422,8 @@ Pandas:
        df = pd.read_csv("dataset.tsv", delimiter="\\t")
        average = df[<COL>].mean()
 LDX:
-        BEGIN CHILDREN {A1}
-        A1 LIKE [G,.*,mean,<COL>] 
+       BEGIN CHILDREN {A1}
+       A1 LIKE [G,.*,mean,<COL>] 
 
 Pandas:       
        df = pd.read_csv("dataset.tsv", delimiter="\\t")
@@ -434,16 +432,89 @@ Pandas:
 
        some_filter = df[df[<COL>] == <VALUE>]
 LDX:
-        BEGIN DESCENDANTS {A1}
-        A1 LIKE [F,<COL>,eq,<VALUE>]
+       BEGIN DESCENDANTS {A1}
+       A1 LIKE [F,<COL>,eq,<VALUE>]
+
+LDX doesn't support multiple filters/aggregations/grouping in a single time, need to split it to different operations: 
 
 Pandas:       
        df = pd.read_csv("dataset.tsv", delimiter="\\t")
 
-       max_property = df[<COL1>].idxmax()
-       focus_of_col1 = df[df[<COL1>] == max_property]
+       df = df[df['column'].isin('value1','value2')]
 LDX:
-        BEGIN DESCENDANTS {A1}
-        A1 LIKE [F,<COL1>,eq,<VALUE>]
+       BEGIN CHILDREN {A1,A2}
+       A1 LIKE [F,'column',eq,'value1']
+       A1 LIKE [F,'column',eq,'value2']
 
+
+Pandas:       
+       df = pd.read_csv("dataset.tsv", delimiter="\\t")
+
+       df = df[df['column'].isin('value1','value2')]
+       df = df.groupby('column1').agg({'column2': 'function'})
+LDX:
+       BEGIN CHILDREN {A1,A2}
+       A1 LIKE [F,'column',eq,'value1'] and CHILDREN {B1}
+        B1 LIKE [G,'column1','function,'column2']
+       A2 LIKE [F,'column',eq,'value2'] and CHILDREN {B2}
+        B2 LIKE [G,'column1','function,'column2']
+        
+Pandas:       
+       df = pd.read_csv("dataset.tsv", delimiter="\\t")
+
+       subgroups = df.groupby(['column1','column2']).agg({'column3': 'function'})
+LDX:
+       BEGIN CHILDREN {A1,A2}
+       A1 LIKE [G,'column1','function,'column3']and CHILDREN {B1}
+        B1 LIKE [G,'column2','function,'column3']
+
+always convert idxmax/idxmin to filter on value placeholder and replace aggregate column by grouped column as follows: 
+
+Pandas:       
+      df = df.groupby('column').agg({'agg_column': 'function'})
+      max_sample = df['agg_column'].idxmax()
+LDX:
+       BEGIN CHILDREN {A1}
+       A1 LIKE [G,'column','function','agg_column'] and CHILDREN {B1}
+        B1 LIKE [F,'column',eq,<VALUE>]
+
+Pandas:       
+      df = df.groupby('column').agg({'agg_column': 'function'})
+      min_sample = df['agg_column'].idxmin()
+LDX:
+       BEGIN CHILDREN {A1}
+       A1 LIKE [G,'column','function','agg_column'] and CHILDREN {B1}
+        B1 LIKE [F,'column',eq,<VALUE>]   
+
+Pandas:       
+      df = df.groupby('column').agg({<AGG_COL>: 'function'})
+      max_sample = df[<AGG_COL>].idxmax()
+LDX:
+       BEGIN CHILDREN {A1}
+       A1 LIKE [G,'column','function','<AGG_COL>'] and CHILDREN {B1}
+        B1 LIKE [F,'column',eq,<VALUE>]
+
+Pandas:       
+      df = df.groupby('column').agg({<AGG_COL>: 'function'})
+      max_sample = df[<AGG_COL>].idxmin()
+LDX:
+       BEGIN CHILDREN {A1}
+       A1 LIKE [G,'column','function','<AGG_COL>'] and CHILDREN {B1}
+         B1 LIKE [F,'column',eq,<VALUE>]
+
+Pandas:       
+      df = df.groupby(<COL>).agg({'agg_column': 'function'})
+      max_sample = df['agg_column'].idxmax()
+LDX:
+       BEGIN CHILDREN {A1}
+       A1 LIKE [G,<COL>,'function','agg_column'] and CHILDREN {B1}
+        B1 LIKE [F,<COL>,eq,<VALUE>]
+
+Pandas:       
+      df = df.groupby(<COL>).agg({'agg_column': 'function'})
+      max_sample = df['agg_column'].idxmin()
+LDX:
+       BEGIN CHILDREN {A1}
+       A1 LIKE [G,<COL>,'function','agg_column'] and CHILDREN {B1}
+        B1 LIKE [F,<COL>,eq,<VALUE>]
 """
